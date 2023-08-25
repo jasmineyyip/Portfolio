@@ -22,9 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // when a section enters or exits the viewport
     const handleIntersection = (entries, observer) => {
         entries.forEach(entry => {
-            // check if the section is in view
             if (entry.isIntersecting) {
-                // clear all active nav links
+                // remove active class from all links
                 navLinks.forEach(link => link.classList.remove('active'));
 
                 // get the corresponding nav link and set it as active
@@ -36,9 +35,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
+    // add click event to each navigation link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            // remove active class from all links
+            navLinks.forEach(lnk => lnk.classList.remove('active'));
+
+            // add active class to the clicked link
+            link.classList.add('active');
+        });
+    });
+
     // create the IntersectionObserver
     const options = {
-        threshold: 0.5  // 50% of the section is in view.
+        threshold: 0.7 // 70% of the section is in view
     };
     const observer = new IntersectionObserver(handleIntersection, options);
 
