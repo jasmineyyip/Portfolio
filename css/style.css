@@ -67,8 +67,7 @@ header .navbar a:hover{
 header .icons i, 
 header .icons a{
     cursor: pointer;
-    margin: 0 0.5rem;
-    height: 4rem;
+    margin: 0 0.3rem;
     line-height: 4rem;
     text-align: center;
     font-size: 1.5rem;
@@ -109,6 +108,10 @@ header .icons #menu-bars{
         display: block;
         margin: 1rem;
         font-size: 0.9rem;
+    }
+
+    header .navbar a:hover{
+        color: var(--charcoal-gray);
     }
 }
 
