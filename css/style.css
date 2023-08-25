@@ -88,7 +88,7 @@ header .icons #menu-bars{
     display: none;
 }
 
-/* typewriter effect with alterating text */
+/* about */
 #about{
     margin: 10rem auto 0 auto;
     width: 80%;
@@ -101,6 +101,7 @@ header .icons #menu-bars{
     font-size: 2rem;
 }
 
+/* typewriter effect with alterating text */
 .wrapper{
     color: var(--steel-gray);
 }
@@ -121,6 +122,117 @@ header .icons #menu-bars{
 .details a:hover{
     text-decoration: underline;
 }
+
+/* experience */
+/* timeline */
+
+/* leadership */
+/* vertical tabs */
+.grid {
+    list-style: none;
+    margin-left: -40px;
+   }
+   
+   .gc {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    padding-left: 40px;
+    vertical-align: top;
+   }
+   
+   .gc--1-of-3 {
+    width: 33.33333%;
+   }
+   
+   .gc--2-of-3 {
+    width: 66.66666%;
+   }
+   
+   .naccs {
+    position: relative;
+    max-width: 900px;
+    margin: 100px auto 0;
+   }
+   
+   .naccs .menu div {
+    padding: 15px 20px 15px 40px;
+    margin-bottom: 10px;
+    color: var(--steel-gray);
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+   }
+   
+   .naccs .menu div:hover {
+    color: var(--soft-gray);
+   }
+
+   .naccs .menu div span {
+    font-size: 0.9rem;
+   }
+   
+   .naccs .menu div span.light {
+    height: 8px;
+    width: 8px;
+    position: absolute;
+    top: 24px;
+    left: 15px;
+    background-color: var(--steel-gray);
+    border-radius: 100%;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+   }
+   
+   .naccs .menu div.active span.light {
+    background-color: var(--soft-gray);
+    height: 60%;
+    width: 3px;
+    top: 10px;
+    border-radius: 0;
+   }
+   
+   .naccs .menu div.active {
+    color: var(--soft-gray);
+   }
+   
+   ul.nacc {
+    position: relative;
+    height: 0px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+   }
+   
+   ul.nacc li {
+    opacity: 0;
+    transform: translateX(50px);
+    position: absolute;
+    list-style: none;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+   }
+   
+   ul.nacc li.active {
+    transition-delay: .3s;
+    z-index: 2;
+    opacity: 1;
+    transform: translateX(0px);
+   }
+
+   ul.nacc li span {
+    color: var(--steel-gray);
+   }
+
+   ul.nacc li h2 {
+    color: var(--soft-gray);
+   }
+   
+   ul.nacc li p {
+    margin: 0;
+   }
+
 
 @media screen and (max-width: 992px){
     header .icons #menu-bars{
