@@ -1,15 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-/* font-family: 'Open Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* font-family: 'Poppins', sans-serif; */
 
 :root{
+    /* colors */
     --soft-gray: #eaeade;
     --charcoal-gray: #1f1f1f;
     --steel-gray: #797979;
     --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+
+    /* breakpoints */
+    /* --xs: 480px;
+    --sm: 576px;
+    --md: 768px;
+    --lg: 992px;
+    --xl: 1200px;
+    --xxl: 1400px; */
 }
 
 *{
-    font-family: 'Open Sans', sans-serif;;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,11 +26,10 @@
     outline: none;
     border: none;
     text-transform: capitalize;
-    transition: all 0.3s linear;
 }
 
 html{
-    background: #f5f5f5;
+    background: var(--charcoal-gray);
     overflow-x: hidden;
     scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
@@ -38,7 +46,7 @@ header{
     align-items: center;
     justify-content: space-between;
     z-index: 999;
-    padding: 1rem 3rem;
+    padding: 1rem 5rem;
 }
 
 header .logo img{
@@ -46,9 +54,9 @@ header .logo img{
 }
 
 header .navbar a{
-    border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     color: var(--steel-gray);
+    font-size: 0.9rem;
 }
 
 header .navbar a.active,
@@ -72,4 +80,40 @@ header .icons a:hover{
     color: var(--soft-gray);
     transform: rotate(360deg);
     transition: all 1s ease;
+}
+
+header .icons #menu-bars{
+    display: none;
+}
+
+@media screen and (max-width: 992px){
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--soft-gray);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    
+    header .navbar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transition: all 0.5s ease;
+    }
+
+    header .navbar a{
+        display: block;
+        margin: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px){
+    header{
+        padding: 1rem 2rem;
+    }
 }
