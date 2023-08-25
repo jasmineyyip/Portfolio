@@ -88,17 +88,25 @@ header .icons #menu-bars{
     display: none;
 }
 
+body {
+    margin: auto;
+    width: 80%;
+}
+
+section {
+    padding: 10px 0 250px 0;
+}
+
+section h1{
+    font-size: 2rem;
+}
+
 /* about */
 #about{
     margin: 10rem auto 0 auto;
-    width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 20px;
-}
-
-#about h1{
-    font-size: 2rem;
 }
 
 /* typewriter effect with alterating text */
@@ -127,77 +135,90 @@ header .icons #menu-bars{
 /* timeline */
 
 /* leadership */
+#leadership .img img{
+    width: 150px;
+}
+
+#leadership h1{
+    color: var(--soft-gray);
+}
+
 /* vertical tabs */
 .grid {
     list-style: none;
     margin-left: -40px;
    }
    
-   .gc {
+   .col {
     box-sizing: border-box;
     display: inline-block;
     margin-right: -.25em;
     min-height: 1px;
-    padding-left: 40px;
+    padding-left: 25px;
     vertical-align: top;
    }
    
-   .gc--1-of-3 {
-    width: 33.33333%;
+   .col.orgs {
+    width: 30%;
    }
    
-   .gc--2-of-3 {
-    width: 66.66666%;
+   .col.details {
+    width: 70%;
    }
    
-   .naccs {
+   .v-tabs {
     position: relative;
-    max-width: 900px;
-    margin: 100px auto 0;
+    margin: 50px auto 0;
    }
    
-   .naccs .menu div {
-    padding: 15px 20px 15px 40px;
+   .v-tabs .menu {
+    position: relative;
+}
+
+.v-tabs .menu::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--steel-gray);
+    z-index: -1; 
+}
+
+.v-tabs .menu div {
+    padding: 5px 20px 5px 40px;
     margin-bottom: 10px;
     color: var(--steel-gray);
     cursor: pointer;
     position: relative;
-    vertical-align: middle;
     transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
-   }
-   
-   .naccs .menu div:hover {
-    color: var(--soft-gray);
-   }
+}
 
-   .naccs .menu div span {
+.v-tabs .menu div span {
     font-size: 0.9rem;
-   }
-   
-   .naccs .menu div span.light {
-    height: 8px;
-    width: 8px;
+}
+
+/* segment of line changes color */
+.v-tabs .menu div span.light {
+    height: calc(100%); 
+    width: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
     position: absolute;
-    top: 24px;
-    left: 15px;
-    background-color: var(--steel-gray);
-    border-radius: 100%;
-    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
-   }
-   
-   .naccs .menu div.active span.light {
+    left: 16px;
+}
+
+.v-tabs .menu div.active span.light {
     background-color: var(--soft-gray);
-    height: 60%;
-    width: 3px;
-    top: 10px;
-    border-radius: 0;
-   }
+}
    
-   .naccs .menu div.active {
+   .v-tabs .menu div.active {
     color: var(--soft-gray);
    }
    
-   ul.nacc {
+   ul.v-tab {
     position: relative;
     height: 0px;
     list-style: none;
@@ -206,7 +227,7 @@ header .icons #menu-bars{
     transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
    }
    
-   ul.nacc li {
+   ul.v-tab li {
     opacity: 0;
     transform: translateX(50px);
     position: absolute;
@@ -214,23 +235,50 @@ header .icons #menu-bars{
     transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
    }
    
-   ul.nacc li.active {
+   ul.v-tab li.active {
     transition-delay: .3s;
     z-index: 2;
     opacity: 1;
     transform: translateX(0px);
    }
 
-   ul.nacc li span {
+   ul.v-tab li .content {
+    display: grid;
+    grid-template-columns: 90% 10%; 
+   }
+
+   ul.v-tab li .date{
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+   }
+
+   ul.v-tab li span {
     color: var(--steel-gray);
    }
 
-   ul.nacc li h2 {
+   ul.v-tab li h3 {
     color: var(--soft-gray);
    }
    
-   ul.nacc li p {
+   ul.v-tab li p {
     margin: 0;
+   }
+
+   ul.v-tab li i {
+    padding-right: 1rem;
+   }
+
+   ul.v-tab li .links{
+    padding-top: 20px;
+   }
+
+   ul.v-tab li .links a{
+    color: var(--steel-gray);
+    padding-right: 2rem;
+   }
+
+   ul.v-tab li .links i{
+    color: var(--soft-gray);
    }
 
 

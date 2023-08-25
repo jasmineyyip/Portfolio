@@ -8,7 +8,7 @@ menu.onclick = () => {
 
 /* typewriter effect with alterating text */
 var typed = new Typed(".auto-type", {
-    strings: ["Web Developer.", "Computer Science student.", "Trojan."],
+    strings: ["Web Developer.", "Computer Science student.", "Problem Solver."],
     typeSpeed: 150,
     backSpeed: 100,
     loop: true
@@ -58,19 +58,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 /* leadership vertical tabs */
-$(document).on("click", ".naccs .menu div", function() {
+$(document).on("click", ".v-tabs .menu div", function() {
 	var numberIndex = $(this).index();
 
 	if (!$(this).hasClass("active")) {
-		$(".naccs .menu div").removeClass("active");
-		$(".naccs ul li").removeClass("active");
+		$(".v-tabs .menu div").removeClass("active");
+		$(".v-tabs ul li").removeClass("active");
 
 		$(this).addClass("active");
-		$(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+		$(".v-tabs ul").find("li:eq(" + numberIndex + ")").addClass("active");
 
-		var listItemHeight = $(".naccs ul")
+		var listItemHeight = $(".v-tabs ul")
 			.find("li:eq(" + numberIndex + ")")
 			.innerHeight();
-		$(".naccs ul").height(listItemHeight + "px");
+		$(".v-tabs ul").height(listItemHeight + "px");
 	}
 });
