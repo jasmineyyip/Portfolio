@@ -8,7 +8,7 @@ menu.onclick = () => {
 
 /* typewriter effect with alterating text */
 var typed = new Typed(".auto-type", {
-    strings: ["Web Developer.", "Computer Science student.", "Problem Solver."],
+    strings: ["Web Developer.", "Computer Science student.", "Problem Solver.", "Rock Climber."],
     typeSpeed: 150,
     backSpeed: 100,
     loop: true
