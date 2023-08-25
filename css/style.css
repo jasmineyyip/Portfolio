@@ -5,7 +5,7 @@
     /* colors */
     --soft-gray: #eaeade;
     --charcoal-gray: #1f1f1f;
-    --steel-gray: #797979;
+    --steel-gray: #909090;
     --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
     /* breakpoints */
@@ -89,12 +89,16 @@ header .icons #menu-bars{
 }
 
 /* typewriter effect with alterating text */
-.about{
+#about{
     margin: 10rem auto 0 auto;
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 20px;
+}
+
+#about h1{
+    font-size: 2rem;
 }
 
 .wrapper{
@@ -148,7 +152,7 @@ header .icons #menu-bars{
 }
 
 @media screen and (max-width: 576px){
-    .about {
+    #about {
         grid-template-columns: 1fr; 
     }
 }

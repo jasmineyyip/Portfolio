@@ -13,3 +13,35 @@ var typed = new Typed(".auto-type", {
     backSpeed: 100,
     loop: true
 })
+
+/* scroll spy */ 
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.navbar a');
+
+    // when a section enters or exits the viewport
+    const handleIntersection = (entries, observer) => {
+        entries.forEach(entry => {
+            // check if the section is in view
+            if (entry.isIntersecting) {
+                // clear all active nav links
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // get the corresponding nav link and set it as active
+                const activeLink = document.querySelector(`.navbar a[href="#${entry.target.id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    };
+
+    // create the IntersectionObserver
+    const options = {
+        threshold: 0.5  // 50% of the section is in view.
+    };
+    const observer = new IntersectionObserver(handleIntersection, options);
+
+    // observe all sections
+    sections.forEach(section => observer.observe(section));
+});
