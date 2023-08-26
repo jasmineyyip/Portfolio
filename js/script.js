@@ -100,75 +100,57 @@ window.addEventListener('scroll', function() {
 
 
 /* vertical animated timeline */
-(function ($) {
-    $(function () {
-  
-  
-      $(window).on('scroll', function () {
-        fnOnScroll();
-      });
-  
-      $(window).on('resize', function () {
-        fnOnResize();
-      });
-  
-  
-      var agTimeline = $('.js-timeline'),
-        agTimelineLine = $('.js-timeline_line'),
-        agTimelineLineProgress = $('.js-timeline_line-progress'),
-        agTimelinePoint = $('.js-timeline-card_point-box'),
-        agTimelineItem = $('.js-timeline_item'),
-        agOuterHeight = $(window).outerHeight(),
-        agHeight = $(window).height(),
-        f = -1,
-        agFlag = false;
-  
-      function fnOnScroll() {
-        agPosY = $(window).scrollTop();
-  
-        fnUpdateFrame();
-      }
-  
-      function fnOnResize() {
-        agPosY = $(window).scrollTop();
-        agHeight = $(window).height();
-  
-        fnUpdateFrame();
-      }
-  
-      function fnUpdateWindow() {
-        agFlag = false;
-  
-        agTimelineLine.css({
-          top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
-          bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
-        });
-  
-        f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
-      }
-  
-      function fnUpdateProgress() {
-        var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
-  
-        i = agTop + agPosY - $(window).scrollTop();
-        a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
-        n = agPosY - a + agOuterHeight / 2;
-        i <= agPosY + agOuterHeight / 2 && (n = i - a);
-        agTimelineLineProgress.css({height: n + "px"});
-  
-        agTimelineItem.each(function () {
-          var agTop = $(this).find(agTimelinePoint).offset().top;
-  
-          (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
-        })
-      }
-  
-      function fnUpdateFrame() {
-        agFlag || requestAnimationFrame(fnUpdateWindow);
-        agFlag = true;
-      }
-  
-  
+(function($) {
+    // cached jQuery objects
+    const timeline = $('.timeline'),
+          timelineLine = $('.line'),
+          timelineProgress = $('.progress'),
+          timelineDot = $('.dot-container'),
+          timelineEntry = $('.item');
+
+    let lastScrollY = -1,
+        isAnimating = false;
+
+    $(window).on({
+        'scroll': updateLayout,
+        'resize': updateLayout
     });
-  })(jQuery);
-  
+
+    function adjustLine() {
+        isAnimating = false;
+        
+        // adjust the timeline line's top and bottom based on the dots
+        timelineLine.css({
+            top: timelineEntry.first().find(timelineDot).offset().top - timelineEntry.first().offset().top,
+            bottom: timeline.offset().top + timeline.outerHeight() - timelineEntry.last().find(timelineDot).offset().top
+        });
+
+        if (lastScrollY !== $(window).scrollTop()) {
+            lastScrollY = $(window).scrollTop();
+            adjustProgress();
+        }
+    }
+
+    function adjustProgress() {
+        const lastDotTop = timelineEntry.last().find(timelineDot).offset().top,
+              progressTop = lastDotTop + lastScrollY - $(window).scrollTop(),
+              progressOffset = timelineProgress.offset().top + lastScrollY - $(window).scrollTop();
+
+        // calculate the new height based on the scroll position and apply
+        const newHeight = Math.min(progressTop, lastScrollY + $(window).outerHeight() / 2) - progressOffset;
+        timelineProgress.css({ height: `${newHeight}px` });
+
+        // add/remove class based on the position of the dot
+        timelineEntry.each(function() {
+            const dotTop = $(this).find(timelineDot).offset().top;
+            $(this).toggleClass('js-active', (dotTop + lastScrollY - $(window).scrollTop()) < lastScrollY + 0.5 * $(window).outerHeight());
+        });
+    }
+
+    function updateLayout() {
+        if (!isAnimating) {
+            requestAnimationFrame(adjustLine);
+        }
+        isAnimating = true;
+    }
+})(jQuery);
