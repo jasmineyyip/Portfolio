@@ -252,15 +252,13 @@ section h1{
     padding: 10px 0;
   }
 
-  .title {
+  .company {
     display: none;
     margin: 10px 0;
     color: var(--soft-gray);
   }
 
   .description {
-    line-height: 1.45;
-    font-size: 16px;
     color: var(--steel-gray);
   }
 
@@ -493,7 +491,7 @@ ul.v-tab li .links i{
         transform: translateX(200%);
       }
   
-      .title {
+      .company {
         display: block;
       }
 }
