@@ -148,31 +148,31 @@ section h1{
 .grid {
     list-style: none;
     margin-left: -40px;
-   }
+}
    
-   .col {
+.col {
     box-sizing: border-box;
     display: inline-block;
     margin-right: -.25em;
     min-height: 1px;
     padding-left: 25px;
     vertical-align: top;
-   }
-   
-   .col.orgs {
+}
+
+.col.orgs {
     width: 30%;
-   }
-   
-   .col.details {
+}
+
+.col.details {
     width: 70%;
-   }
-   
-   .v-tabs {
+}
+
+.v-tabs {
     position: relative;
     margin: 50px auto 0;
-   }
-   
-   .v-tabs .menu {
+}
+
+.v-tabs .menu {
     position: relative;
 }
 
@@ -215,72 +215,78 @@ section h1{
     background-color: var(--soft-gray);
 }
    
-   .v-tabs .menu div.active {
+.v-tabs .menu div.active {
     color: var(--soft-gray);
-   }
+}
    
-   ul.v-tab {
+ul.v-tab {
     position: relative;
     height: 0px;
     list-style: none;
     margin: 0;
     padding: 0;
     transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
-   }
+}
    
-   ul.v-tab li {
+ul.v-tab li {
     opacity: 0;
     transform: translateX(50px);
     position: absolute;
     list-style: none;
     transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
-   }
+}
    
-   ul.v-tab li.active {
+ul.v-tab li.active {
     transition-delay: .3s;
     z-index: 2;
     opacity: 1;
     transform: translateX(0px);
-   }
+}
 
-   ul.v-tab li .content {
+ul.v-tab li .content {
     display: grid;
     grid-template-columns: 90% 10%; 
-   }
+}
 
-   ul.v-tab li .date{
+ul.v-tab li .date{
     padding-top: 0.5rem;
     padding-bottom: 1rem;
-   }
+}
 
-   ul.v-tab li span {
+ul.v-tab li span {
     color: var(--steel-gray);
-   }
+}
 
-   ul.v-tab li h3 {
+ul.v-tab li h3 {
     color: var(--soft-gray);
-   }
-   
-   ul.v-tab li p {
+}
+
+ul.v-tab li p {
     margin: 0;
-   }
+}
 
-   ul.v-tab li i {
+ul.v-tab li i {
     padding-right: 1rem;
-   }
+}
 
-   ul.v-tab li .links{
+ul.v-tab li .links{
     padding-top: 20px;
-   }
+    display: flex;
+    flex-wrap: wrap;
+}
 
-   ul.v-tab li .links a{
+ul.v-tab li .link{
+    min-width: 150px; 
+    margin: 3px 20px 0 0;
+}
+
+ul.v-tab li .links a{
     color: var(--steel-gray);
-    padding-right: 2rem;
-   }
+}
 
-   ul.v-tab li .links i{
+ul.v-tab li .links i{
     color: var(--soft-gray);
-   }
+}
 
 
 @media screen and (max-width: 992px){
@@ -309,6 +315,91 @@ section h1{
 
     header .navbar a:hover{
         color: var(--charcoal-gray);
+    }
+
+    #leadership .img img{
+        display: none;
+    }
+
+    ul.v-tab li .content {
+        display: grid;
+        grid-template-columns: 100%; 
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* vertical tabs turn horizontal; description collapse to the bottom */
+    .v-tabs .menu {
+        display: flex;
+        overflow-x: auto;
+        margin-bottom: 20px;
+        white-space: nowrap;  /* ensures that the tabs won't wrap into the next line */
+    }
+
+    /* make vertical line horizontal */
+    .v-tabs .menu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0; 
+        height: 2px; 
+        background-color: var(--steel-gray);
+        z-index: -1;
+        top: calc(100% - 12px);
+        width: 1005px;
+    }
+
+    .v-tabs .menu div {
+        display: inline-block;
+    }
+
+    .grid {
+        display: block;
+    }
+
+    .col {
+        padding-left: 40px;
+    }
+
+    .col.orgs, .col.details {
+        width: 100%;
+    }
+
+    ul.v-tab {
+        position: relative;
+        height: auto;
+    }
+
+    ul.v-tab li.active {
+        position: relative;
+    }
+
+    .v-tabs .menu div span.light {
+        width: calc(90%);
+        height: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: calc(100% - 2px);
+    }
+
+    /* first tab */
+    .v-tabs .menu div:first-child {
+        padding-left: 0;
+    }
+
+    .v-tabs .menu div:first-child span.light {
+        width: calc(190%);
+        left: 0%;
+    }
+
+    /* active tab */
+    .v-tabs .menu div.active span.light {
+        background-color: var(--soft-gray);
+    }
+
+    .v-tabs .menu div {
+        padding: 10px 20px; 
     }
 }
 

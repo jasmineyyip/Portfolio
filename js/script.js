@@ -59,18 +59,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* leadership vertical tabs */
 $(document).on("click", ".v-tabs .menu div", function() {
-	var numberIndex = $(this).index();
+    var numberIndex = $(this).index();
+    
+    if (!$(this).hasClass("active")) {
+        $(".v-tabs .menu div").removeClass("active");
+        $(".v-tabs ul li").removeClass("active");
 
-	if (!$(this).hasClass("active")) {
-		$(".v-tabs .menu div").removeClass("active");
-		$(".v-tabs ul li").removeClass("active");
-
-		$(this).addClass("active");
-		$(".v-tabs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
-		var listItemHeight = $(".v-tabs ul")
-			.find("li:eq(" + numberIndex + ")")
-			.innerHeight();
-		$(".v-tabs ul").height(listItemHeight + "px");
-	}
+        $(this).addClass("active");
+        $(".v-tabs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+        
+        if ($(window).width() > 768) {  // Only adjust height for larger screens
+            var listItemHeight = $(".v-tabs ul")
+                .find("li:eq(" + numberIndex + ")")
+                .innerHeight();
+            $(".v-tabs ul").height(listItemHeight + "px");
+        }
+    }
 });
