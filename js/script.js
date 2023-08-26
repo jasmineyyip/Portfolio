@@ -1,3 +1,4 @@
+/* hamburger menu */
 let menu = document.querySelector('#menu-bars');
 let navbar = document.querySelector('.navbar');
 
@@ -68,7 +69,7 @@ $(document).on("click", ".v-tabs .menu div", function() {
         $(this).addClass("active");
         $(".v-tabs ul").find("li:eq(" + numberIndex + ")").addClass("active");
         
-        if ($(window).width() > 768) {  // Only adjust height for larger screens
+        if ($(window).width() > 768) {  // only adjust height for larger screens
             var listItemHeight = $(".v-tabs ul")
                 .find("li:eq(" + numberIndex + ")")
                 .innerHeight();
@@ -76,3 +77,24 @@ $(document).on("click", ".v-tabs .menu div", function() {
         }
     }
 });
+
+/* fade in on scroll */
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('.fade-in'); // target all "fade-in" sections
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top; // get the position of the section relative to the viewport
+        const sectionBottom = section.getBoundingClientRect().bottom; // get the position of the section's bottom relative to the viewport
+        const windowHeight = window.innerHeight;
+
+        // Check if ANY part of the section is in the viewport
+        if (sectionTop < windowHeight && sectionBottom > 0) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        } else {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+        }
+    });
+});
+

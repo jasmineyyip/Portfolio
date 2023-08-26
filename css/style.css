@@ -93,8 +93,14 @@ body {
     width: 80%;
 }
 
+.fade-in {
+    opacity: 0;
+    transform: translateY(100px); 
+    transition: opacity 0.5s, transform 0.5s;
+}
+
 section {
-    padding: 10px 0 250px 0;
+    padding: 10px 0 50px 0;
 }
 
 section h1{
@@ -103,7 +109,7 @@ section h1{
 
 /* about */
 #about{
-    margin: 10rem auto 0 auto;
+    padding: 10rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 20px;
@@ -160,11 +166,11 @@ section h1{
 }
 
 .col.orgs {
-    width: 30%;
+    width: 25%;
 }
 
 .col.details {
-    width: 70%;
+    width: 75%;
 }
 
 .v-tabs {
@@ -214,7 +220,8 @@ section h1{
 .v-tabs .menu div.active span.light {
     background-color: var(--soft-gray);
 }
-   
+
+.v-tabs .menu div:hover,
 .v-tabs .menu div.active {
     color: var(--soft-gray);
 }
@@ -313,6 +320,7 @@ ul.v-tab li .links i{
         margin: 1rem;
     }
 
+    header .navbar a.active,
     header .navbar a:hover{
         color: var(--charcoal-gray);
     }
@@ -329,10 +337,14 @@ ul.v-tab li .links i{
 
 @media only screen and (max-width: 768px) {
     /* vertical tabs turn horizontal; description collapse to the bottom */
+    .v-tabs {
+        margin: 30px auto 0;
+    }
+
     .v-tabs .menu {
         display: flex;
         overflow-x: auto;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         white-space: nowrap;  /* ensures that the tabs won't wrap into the next line */
     }
 
@@ -346,8 +358,8 @@ ul.v-tab li .links i{
         height: 2px; 
         background-color: var(--steel-gray);
         z-index: -1;
-        top: calc(100% - 12px);
-        width: 1005px;
+        top: calc(100% - 10px);
+        width: 740px;
     }
 
     .v-tabs .menu div {
@@ -376,21 +388,11 @@ ul.v-tab li .links i{
     }
 
     .v-tabs .menu div span.light {
-        width: calc(90%);
+        width: calc(100%);
         height: 2px;
         left: 50%;
         transform: translateX(-50%);
-        top: calc(100% - 2px);
-    }
-
-    /* first tab */
-    .v-tabs .menu div:first-child {
-        padding-left: 0;
-    }
-
-    .v-tabs .menu div:first-child span.light {
-        width: calc(190%);
-        left: 0%;
+        top: calc(100%);
     }
 
     /* active tab */
@@ -406,6 +408,10 @@ ul.v-tab li .links i{
 @media screen and (max-width: 576px){
     #about {
         grid-template-columns: 1fr; 
+    }
+
+    .wrapper{
+        padding-bottom: 10px;
     }
 }
 
