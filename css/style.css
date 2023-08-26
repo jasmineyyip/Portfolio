@@ -60,6 +60,7 @@ header .navbar a{
     padding: 0.5rem 1rem;
     color: var(--steel-gray);
     text-transform: capitalize;
+    transition: 0.3s ease;
 }
 
 header .navbar a.active,
@@ -289,6 +290,12 @@ ul.v-tab li .link{
 
 ul.v-tab li .links a{
     color: var(--steel-gray);
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+ul.v-tab li .links a:hover{
+    color: var(--soft-gray);
 }
 
 ul.v-tab li .links i{

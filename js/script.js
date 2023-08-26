@@ -87,7 +87,7 @@ window.addEventListener('scroll', function() {
         const sectionBottom = section.getBoundingClientRect().bottom; // get the position of the section's bottom relative to the viewport
         const windowHeight = window.innerHeight;
 
-        // Check if ANY part of the section is in the viewport
+        // check if ANY part of the section is in the viewport
         if (sectionTop < windowHeight && sectionBottom > 0) {
             section.style.opacity = '1';
             section.style.transform = 'translateY(0)';
