@@ -5,7 +5,7 @@
     /* colors */
     --soft-gray: #eaeade;
     --charcoal-gray: #1f1f1f;
-    --gay: #242424;
+    --gay: #2e2e2e;
     --steel-gray: #909090;
     --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
@@ -102,7 +102,7 @@ body {
 }
 
 section {
-    padding: 10px 0 50px 0;
+    padding: 10px 0 70px 0;
 }
 
 section h1{
@@ -112,7 +112,7 @@ section h1{
 
 /* about */
 #about{
-    padding: 10rem 0;
+    padding-top: 10rem;
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 20px;
@@ -142,6 +142,9 @@ section h1{
 
 /* experience */
 /* vertical animated timeline */
+#experience{
+    padding-bottom: 0;
+}
 .timeline-container {
     width: 1160px;
     margin: 0 auto;
@@ -149,7 +152,7 @@ section h1{
   }
   
   .vertical-timeline {
-    padding: 30px 0;
+    padding-top: 40px;
   }
 
   .item {
@@ -250,18 +253,62 @@ section h1{
 
   .entry {
     padding: 10px 0;
+    text-align: left;
   }
 
   .company {
-    display: none;
-    margin: 10px 0;
+    margin-bottom: 2px;
+    color: var(--soft-gray);
+  }
+
+  .position {
+    margin-bottom: 5px;
     color: var(--soft-gray);
   }
 
   .description {
     color: var(--steel-gray);
+    padding: 10px 0;
   }
 
+  .description a {
+    color: var(--soft-gray);
+  }
+
+  .description i {
+    padding-right: 1rem;
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .skill{
+    background-color: var(--gay);
+    border-radius: 15px;
+    padding: 0 12px;
+    margin: 10px 10px 0 0;
+    font-size: 12px;
+  }
+
+  .link.external {
+    text-align: center;
+  }
+
+  .link.external a {
+    text-decoration: none;
+    color: var(--steel-gray);
+    transition: 0.3s ease;
+  }
+
+  .link.external a:hover {
+    color: var(--soft-gray);
+  }
+
+  .link.external i {
+    padding-left: 10px;
+  }
 
 /* leadership */
 #leadership .img img{
@@ -493,10 +540,15 @@ ul.v-tab li .links i{
   
       .company {
         display: block;
+        padding-top: 10px;
       }
 }
 
 @media only screen and (max-width: 768px) {
+    section {
+        padding: 10px 0 50px 0;
+    }
+
     /* vertical tabs turn horizontal; description collapse to the bottom */
     .v-tabs {
         margin: 30px auto 0;

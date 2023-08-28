@@ -143,7 +143,7 @@ window.addEventListener('scroll', function() {
         // add/remove class based on the position of the dot
         timelineEntry.each(function() {
             const dotTop = $(this).find(timelineDot).offset().top;
-            $(this).toggleClass('js-active', (dotTop + lastScrollY - $(window).scrollTop()) < lastScrollY + 0.7 * $(window).outerHeight());
+            $(this).toggleClass('js-active', (dotTop + lastScrollY - $(window).scrollTop()) < lastScrollY + 0.5 * $(window).outerHeight());
         });
     }
 
