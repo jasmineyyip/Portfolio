@@ -264,18 +264,16 @@ section h1{
     color: var(--soft-gray);
   }
 
-  .description {
-    color: var(--steel-gray);
-    padding: 10px 0;
+  .description p {
+    position: relative;  /* Set to relative so the child (icon) can be positioned absolutely within */
+    padding-left: 20px;  /* Space to accommodate the icon and a bit of margin */
   }
 
-  .description a {
-    color: var(--soft-gray);
-  }
-
-  .description i {
-    padding-right: 1rem;
-  }
+   .description i {
+        position: absolute;  /* Position the icon absolutely within the parent */
+        left: 0;  /* Align to the left of the parent */
+        top: 7px;  /* Align to the top of the parent */
+    }
 
   .skills {
     display: flex;
@@ -335,9 +333,10 @@ section h1{
   
   .demo-img img {
     width: 100%;
-    height: 550px;
+    height: 100%;
     display: none;
     object-fit: cover;
+    border-radius: 15px;
   }
   
   .demo-img img.active {
@@ -555,11 +554,6 @@ ul.v-tab li .content {
     grid-template-columns: 90% 10%; 
 }
 
-ul.v-tab li .date{
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-}
-
 ul.v-tab li span {
     color: var(--steel-gray);
 }
@@ -570,10 +564,18 @@ ul.v-tab li h3 {
 
 ul.v-tab li p {
     margin: 0;
+    position: relative; 
+    padding-left: 20px;
+}
+
+ul.v-tab li .date{
+    padding: 0.5rem 0 1rem 0;
 }
 
 ul.v-tab li i {
-    padding-right: 1rem;
+    position: absolute; 
+    left: 0; 
+    top: 7px;  
 }
 
 ul.v-tab li .links{
@@ -599,6 +601,9 @@ ul.v-tab li .links a:hover{
 
 ul.v-tab li .links i{
     color: var(--soft-gray);
+    position: relative;
+    padding-right: 1rem;
+    top: 1px; 
 }
 
 @media screen and (max-width: 1200px){
@@ -676,6 +681,28 @@ ul.v-tab li .links i{
         display: block;
         padding-top: 10px;
       }
+
+      /* proj demo stacks */
+
+    .demo-container {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    /* hiding the progress bar */
+    .progress-bar {
+        display: none;
+    }
+
+    /* hiding the next and prev buttons */
+    .prev, .next {
+        display: none;
+    }
+
+    .project {
+        padding: 2rem 0 5rem 0;
+    }
 }
 
 @media only screen and (max-width: 768px) {

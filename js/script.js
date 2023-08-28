@@ -164,11 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const extraInfos = document.querySelectorAll('.extra-info');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
-    const duration = 12000; // 10 seconds
-
-    let isPaused = false; 
-    let startTime;
-    let pauseTime;
+    const duration = 18000; // 18 sseconds
 
     function resetProgresses() {
         progresses.forEach(progress => {
@@ -178,18 +174,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function animateProgress(index) {
-        if (isPaused && pauseTime) {
-            let timeElapsed = pauseTime - startTime;
-            let remainingDuration = duration - timeElapsed;
-            progresses[index].style.transition = `width ${remainingDuration}ms linear`;
-            progresses[index].style.width = '100%';
-        } else {
-            resetProgresses();
-            progresses[index].style.transition = `width ${duration}ms linear`;
-            progresses[index].style.width = '100%';
-            startTime = Date.now();
-            pauseTime = null;
-        }
+        resetProgresses();
+
+        progresses[index].style.transition = `width ${duration}ms linear`;
+        progresses[index].style.width = '100%';
     }
 
     function activateProject(index) {
@@ -202,16 +190,14 @@ document.addEventListener('DOMContentLoaded', function() {
         demoImgs[currentIndex].classList.add('active');
         projects[currentIndex].classList.add('active');
         extraInfos[currentIndex].style.display = 'block';
-        
+
         animateProgress(currentIndex);
     }
 
     function nextProject() {
-        if(!isPaused) {  // only proceed if it's not paused
-            let nextIndex = currentIndex + 1;
-            if (nextIndex >= demoImgs.length) nextIndex = 0;
-            activateProject(nextIndex);
-        }
+        let nextIndex = currentIndex + 1;
+        if (nextIndex >= demoImgs.length) nextIndex = 0;
+        activateProject(nextIndex);
     }
 
     function prevProject() {
@@ -220,59 +206,81 @@ document.addEventListener('DOMContentLoaded', function() {
         activateProject(prevIndex);
     }
 
-    projects.forEach((project, index) => {
-        project.addEventListener('click', () => activateProject(index));
-    });
-
-    prevBtn.addEventListener('click', prevProject);
-    nextBtn.addEventListener('click', nextProject);
-
-    // toggle pause on current demo image click
-    function togglePause() {
-        isPaused = !isPaused;
-        if (isPaused) {
-            stopAutoRotate();
-            let computedStyle = getComputedStyle(progresses[currentIndex]);
-            let currentWidth = parseFloat(computedStyle.width);
-            progresses[currentIndex].style.width = `${currentWidth}px`;  // set current width
-            pauseTime = Date.now();
-        } else {
-            animateProgress(currentIndex); // restart the progress bar animation
-            startAutoRotate();
-        }
+    function restartAutoRotate() {
+        clearInterval(autoRotateInterval); // clear existing interval
+        startAutoRotate(); // start a fresh one
+        animateProgress(currentIndex); // start the progress bar animation
     }
     
-    // toggle pause on current demo image click
-    demoImgs.forEach(img => {
-        img.addEventListener('click', togglePause);
-    });
-    
-    // toggle pause on current project description click
-    projects.forEach(desc => {
-        desc.addEventListener('click', (event) => {
-            const projectIndex = Array.from(projects).indexOf(event.target);
-            if (projectIndex === currentIndex) { // only act if it's the current project description
-                togglePause();
-            }
+    demoImgs.forEach((img, index) => {
+        img.addEventListener('click', function() {
+            resetProgresses();
+            restartAutoRotate();
         });
     });
+    
+    projects.forEach((project, index) => {
+        project.addEventListener('click', function() {
+            resetProgresses();
+            restartAutoRotate();
+        });
+    });
+    
+
+    let isPaused = false;
+
+    function togglePause() {
+        if (isPaused) {
+            restartAutoRotate();
+        } else {
+            resetProgresses();
+            stopAutoRotate();
+        }
+        isPaused = !isPaused;
+    }
+
+    demoImgs.forEach((img, index) => {
+        img.addEventListener('click', togglePause);
+    });
+
+    projects.forEach((project, index) => {
+        project.addEventListener('click', function() {
+            activateProject(index); // change the project on clicking its description
+            resetProgresses();
+            restartAutoRotate();
+        });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        resetProgresses();
+        prevProject();
+        restartAutoRotate();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        resetProgresses();
+        nextProject();
+        restartAutoRotate();
+    });
+
 
     // activate when scrolled in view
     let autoRotateInterval;
 
     function startAutoRotate() {
-        clearInterval(autoRotateInterval); // clear any existing interval
+        clearInterval(autoRotateInterval);
         autoRotateInterval = setInterval(nextProject, duration);
     }
 
     function stopAutoRotate() {
         clearInterval(autoRotateInterval);
     }
+
     const demoContainer = document.querySelector('.demo-container');
 
     let observer = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
-            if (entry.isIntersecting) { // when element is visible in viewport
+            if (entry.isIntersecting) {
                 startAutoRotate();
                 activateProject(currentIndex);
             } else {
@@ -283,15 +291,108 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0.5
     });
 
-    // observe the demo container
     observer.observe(demoContainer);
 
-    // stop auto-rotation when page is hidden (e.g. when user switches tab)
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
             stopAutoRotate();
         } else {
             startAutoRotate();
+        }
+    });
+
+    //* activate all when in mobile view */
+    function activateAllProjectsForMobile() {
+        demoImgs.forEach(img => img.classList.add('active'));
+        projects.forEach(project => project.classList.add('active'));
+        extraInfos.forEach(info => (info.style.display = 'block'));
+    }
+
+    function deactivateAllProjectsForMobile() {
+        demoImgs.forEach(img => img.classList.remove('active'));
+        projects.forEach(project => project.classList.remove('active'));
+        extraInfos.forEach(info => (info.style.display = 'none'));
+    }
+
+    if (window.innerWidth <= 992) {
+        stopAutoRotate(); // stop any auto-rotation
+        activateAllProjectsForMobile(); // show all demos at once
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 992) {
+            stopAutoRotate();
+            activateAllProjectsForMobile();
+        } else {
+            deactivateAllProjectsForMobile();
+            startAutoRotate(); // start the auto rotation again for larger screens
+            activateProject(currentIndex); // ensure a single project is active
+        }
+    });
+
+    /* activate all when in mobile view */
+    function activateAllProjectsForMobile() {
+        demoImgs.forEach(img => img.classList.add('active'));
+        projects.forEach(project => project.classList.add('active'));
+        extraInfos.forEach(info => (info.style.display = 'block'));
+    }
+
+    function deactivateAllProjectsForMobile() {
+        demoImgs.forEach(img => img.classList.remove('active'));
+        projects.forEach(project => project.classList.remove('active'));
+        extraInfos.forEach(info => (info.style.display = 'none'));
+    }
+
+    if (window.innerWidth <= 992) {
+        stopAutoRotate(); // stop any auto-rotation
+        activateAllProjectsForMobile(); // show all demos at once
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 992) {
+            stopAutoRotate();
+            activateAllProjectsForMobile();
+        } else {
+            deactivateAllProjectsForMobile();
+            startAutoRotate(); // start the auto rotation again for larger screens
+            activateProject(currentIndex); // ensure a single project is active
+        }
+    });
+
+    /* overly complicating things */
+    function rearrangeForMobile() {
+        const demoContainer = document.querySelector('.demo-container');
+        const demoImages = document.querySelectorAll('.demo-img img');
+        const projects = document.querySelectorAll('.projects .project');
+
+        for (let i = 0; i < demoImages.length; i++) {
+            demoContainer.appendChild(demoImages[i]);
+            if (projects[i]) {
+                demoContainer.appendChild(projects[i]);
+            }
+        }
+    }
+
+    function rearrangeForDesktop() {
+        const demoContainer = document.querySelector('.demo-container');
+        const demoImages = document.querySelectorAll('.demo-container > img');
+        const projects = document.querySelectorAll('.demo-container > .project');
+        const demoImgDiv = document.querySelector('.demo-img');
+        const projectsDiv = document.querySelector('.projects');
+
+        demoImages.forEach(img => demoImgDiv.appendChild(img));
+        projects.forEach(project => projectsDiv.appendChild(project));
+    }
+
+    if (window.innerWidth <= 992) {
+        rearrangeForMobile();
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 992) {
+            rearrangeForMobile();
+        } else {
+            rearrangeForDesktop();
         }
     });
 });
