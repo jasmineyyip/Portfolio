@@ -301,35 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //* activate all when in mobile view */
-    function activateAllProjectsForMobile() {
-        demoImgs.forEach(img => img.classList.add('active'));
-        projects.forEach(project => project.classList.add('active'));
-        extraInfos.forEach(info => (info.style.display = 'block'));
-    }
-
-    function deactivateAllProjectsForMobile() {
-        demoImgs.forEach(img => img.classList.remove('active'));
-        projects.forEach(project => project.classList.remove('active'));
-        extraInfos.forEach(info => (info.style.display = 'none'));
-    }
-
-    if (window.innerWidth <= 992) {
-        stopAutoRotate(); // stop any auto-rotation
-        activateAllProjectsForMobile(); // show all demos at once
-    }
-
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 992) {
-            stopAutoRotate();
-            activateAllProjectsForMobile();
-        } else {
-            deactivateAllProjectsForMobile();
-            startAutoRotate(); // start the auto rotation again for larger screens
-            activateProject(currentIndex); // ensure a single project is active
-        }
-    });
-
     /* activate all when in mobile view */
     function activateAllProjectsForMobile() {
         demoImgs.forEach(img => img.classList.add('active'));
