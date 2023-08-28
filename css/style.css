@@ -6,6 +6,7 @@
     --soft-gray: #eaeade;
     --charcoal-gray: #1f1f1f;
     --gay: #2e2e2e;
+    --smoky-gray: #545454;;
     --steel-gray: #909090;
     --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
@@ -346,26 +347,41 @@ section h1{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    gap: 50px;
   }
   
   .project {
     flex: 1;
-    text-align: center;
-    margin: 0 10px;
   }
   
-  .project-description {
-    color: black;
+  .project-description h3 {
+    color: var(--steel-gray);
     cursor: pointer;
+    line-height: 3rem;
   }
+
+  .project-description p {
+    color: var(--smoky-gray);
+    line-height: 1.8rem;
+  }  
   
-  .project-description.active {
-    color: red;
+  .project-description.active h3 {
+    color: var(--soft-gray);
+  }
+
+  .project-description.active p {
+    color: var(--steel-gray);
+  }
+
+  .project .extra-info {
+    color: var(--smoky-gray);
+    line-height: 1.8rem;
+    padding-top: 0.8rem;
   }
   
   .project .progress-bar {
     height: 5px;
-    background: yellow;
+    background: var(--smoky-gray);
     border-radius: 10px;
     margin-bottom: 10px;
   }
@@ -373,7 +389,7 @@ section h1{
   .project .progress-var-1 {
     height: 5px;
     width: 0;
-    background: blue;
+    background: var(--soft-gray);
     border-radius: 10px;
   }
   
@@ -388,7 +404,7 @@ section h1{
     border: none;
     cursor: pointer;
     z-index: 10;
-    margin-top: -150px;
+    margin-bottom: 250px;
 }
 
     .prev, .next i {
