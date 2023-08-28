@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const extraInfos = document.querySelectorAll('.extra-info');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
-    const duration = 10000; // 10 seconds
+    const duration = 12000; // 10 seconds
 
     let isPaused = false; 
     let startTime;

@@ -283,6 +283,7 @@ section h1{
   }
 
   .skill{
+    color: var(--steel-gray);
     background-color: var(--gay);
     border-radius: 15px;
     padding: 0 12px;
@@ -334,7 +335,7 @@ section h1{
   
   .demo-img img {
     width: 100%;
-    height: 100%;
+    height: 550px;
     display: none;
     object-fit: cover;
   }
@@ -353,6 +354,13 @@ section h1{
   .project {
     flex: 1;
   }
+
+  .project-description h4 {
+    font-weight: normal;
+    font-size: 0.8rem;
+    padding: 0.5rem 0 0rem 0;
+    color: var(--steel-gray);
+  }
   
   .project-description h3 {
     color: var(--steel-gray);
@@ -364,7 +372,23 @@ section h1{
     color: var(--smoky-gray);
     line-height: 1.8rem;
   }  
-  
+
+  .project-description span {
+    padding-left: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .project-description a {
+    text-decoration: none;
+    padding-right: 0.5rem;
+    color: var(--steel-gray);
+    transition: 0.3s ease;
+  }
+
+  .project-description a:hover {
+    color: var(--soft-gray);
+  }
+
   .project-description.active h3 {
     color: var(--soft-gray);
   }
@@ -404,7 +428,7 @@ section h1{
     border: none;
     cursor: pointer;
     z-index: 10;
-    margin-bottom: 250px;
+    margin-bottom: 350px;
 }
 
     .prev, .next i {
