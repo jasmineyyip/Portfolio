@@ -166,52 +166,83 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.next');
     const duration = 10000; // 10 seconds
 
+    let isPaused = false; 
+    let startTime;
+    let pauseTime;
+
     function resetProgresses() {
-    progresses.forEach(progress => {
-        progress.style.transition = 'none';
-        progress.style.width = '0%';
-    });
+        progresses.forEach(progress => {
+            progress.style.transition = 'none';
+            progress.style.width = '0%';
+        });
     }
 
     function animateProgress(index) {
-    resetProgresses();
-
-    progresses[index].style.transition = `width ${duration}ms linear`;
-    progresses[index].style.width = '100%';
+        if (isPaused && pauseTime) {
+            let timeElapsed = pauseTime - startTime;
+            let remainingDuration = duration - timeElapsed;
+            progresses[index].style.transition = `width ${remainingDuration}ms linear`;
+            progresses[index].style.width = '100%';
+        } else {
+            resetProgresses();
+            progresses[index].style.transition = `width ${duration}ms linear`;
+            progresses[index].style.width = '100%';
+            startTime = Date.now();
+            pauseTime = null;
+        }
     }
 
     function activateProject(index) {
-    demoImgs[currentIndex].classList.remove('active');
-    projects[currentIndex].classList.remove('active');
-    extraInfos[currentIndex].style.display = 'none';
+        demoImgs[currentIndex].classList.remove('active');
+        projects[currentIndex].classList.remove('active');
+        extraInfos[currentIndex].style.display = 'none';
 
-    currentIndex = index;
+        currentIndex = index;
 
-    demoImgs[currentIndex].classList.add('active');
-    projects[currentIndex].classList.add('active');
-    extraInfos[currentIndex].style.display = 'block';
-    
-    animateProgress(currentIndex);
+        demoImgs[currentIndex].classList.add('active');
+        projects[currentIndex].classList.add('active');
+        extraInfos[currentIndex].style.display = 'block';
+        
+        animateProgress(currentIndex);
     }
 
     function nextProject() {
-    let nextIndex = currentIndex + 1;
-    if (nextIndex >= demoImgs.length) nextIndex = 0;
-    activateProject(nextIndex);
+        if(!isPaused) {  // Only proceed if it's not paused
+            let nextIndex = currentIndex + 1;
+            if (nextIndex >= demoImgs.length) nextIndex = 0;
+            activateProject(nextIndex);
+        }
     }
 
     function prevProject() {
-    let prevIndex = currentIndex - 1;
-    if (prevIndex < 0) prevIndex = demoImgs.length - 1;
-    activateProject(prevIndex);
+        let prevIndex = currentIndex - 1;
+        if (prevIndex < 0) prevIndex = demoImgs.length - 1;
+        activateProject(prevIndex);
     }
 
     projects.forEach((project, index) => {
-    project.addEventListener('click', () => activateProject(index));
+        project.addEventListener('click', () => activateProject(index));
     });
 
     prevBtn.addEventListener('click', prevProject);
     nextBtn.addEventListener('click', nextProject);
+
+    // Toggle pause on current demo image click
+    demoImgs.forEach(img => {
+        img.addEventListener('click', () => {
+            isPaused = !isPaused;
+            if (isPaused) {
+                stopAutoRotate();
+                let computedStyle = getComputedStyle(progresses[currentIndex]);
+                let currentWidth = parseFloat(computedStyle.width);
+                progresses[currentIndex].style.width = `${currentWidth}px`;  // Set current width
+                pauseTime = Date.now();
+            } else {
+                animateProgress(currentIndex); // Restart the progress bar animation
+                startAutoRotate();
+            }
+        });
+    });
 
     // activate when scrolled in view
     let autoRotateInterval;
@@ -229,11 +260,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let observer = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) { // when element is visible in viewport
-                // start auto rotation
                 startAutoRotate();
                 activateProject(currentIndex);
             } else {
-                // stop auto rotation
                 stopAutoRotate();
             }
         });
