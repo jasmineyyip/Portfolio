@@ -142,9 +142,6 @@ section h1{
 
 /* experience */
 /* vertical animated timeline */
-#experience{
-    padding-bottom: 0;
-}
 .timeline-container {
     width: 1160px;
     margin: 0 auto;
@@ -183,7 +180,7 @@ section h1{
     transform: translateX(-50%);
   }
   
-  .progress {
+  .line .progress {
     width: 100%;
     height: 20%;
     background-color: var(--soft-gray);
@@ -308,6 +305,87 @@ section h1{
 
   .link.external i {
     padding-left: 10px;
+  }
+
+/* project */
+/* demo slider */
+.demo-container {
+    position: relative;
+  }
+  
+  .demo-img {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .demo-img img {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
+  }
+  
+  .demo-img img.active {
+    display: block;
+  }
+  
+  .projects {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .project {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  .project-description {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .project-description.active {
+    color: red;
+  }
+  
+  .project .progress-bar {
+    height: 5px;
+    background: yellow;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .project .progress-var-1 {
+    height: 5px;
+    width: 0;
+    background: blue;
+    border-radius: 10px;
+  }
+  
+  .extra-info {
+    display: none;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
   }
 
 /* leadership */

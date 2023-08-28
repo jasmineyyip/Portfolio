@@ -154,3 +154,102 @@ window.addEventListener('scroll', function() {
         isAnimating = true;
     }
 })(jQuery);
+
+/* project demo slider */
+document.addEventListener('DOMContentLoaded', function() {
+    let currentIndex = 0;
+    const demoImgs = document.querySelectorAll('.demo-img img');
+    const projects = document.querySelectorAll('.project-description');
+    const progresses = document.querySelectorAll('.progress-var-1');
+    const extraInfos = document.querySelectorAll('.extra-info');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const duration = 10000; // 10 seconds
+
+    function resetProgresses() {
+    progresses.forEach(progress => {
+        progress.style.transition = 'none';
+        progress.style.width = '0%';
+    });
+    }
+
+    function animateProgress(index) {
+    resetProgresses();
+
+    progresses[index].style.transition = `width ${duration}ms linear`;
+    progresses[index].style.width = '100%';
+    }
+
+    function activateProject(index) {
+    demoImgs[currentIndex].classList.remove('active');
+    projects[currentIndex].classList.remove('active');
+    extraInfos[currentIndex].style.display = 'none';
+
+    currentIndex = index;
+
+    demoImgs[currentIndex].classList.add('active');
+    projects[currentIndex].classList.add('active');
+    extraInfos[currentIndex].style.display = 'block';
+    
+    animateProgress(currentIndex);
+    }
+
+    function nextProject() {
+    let nextIndex = currentIndex + 1;
+    if (nextIndex >= demoImgs.length) nextIndex = 0;
+    activateProject(nextIndex);
+    }
+
+    function prevProject() {
+    let prevIndex = currentIndex - 1;
+    if (prevIndex < 0) prevIndex = demoImgs.length - 1;
+    activateProject(prevIndex);
+    }
+
+    projects.forEach((project, index) => {
+    project.addEventListener('click', () => activateProject(index));
+    });
+
+    prevBtn.addEventListener('click', prevProject);
+    nextBtn.addEventListener('click', nextProject);
+
+    // activate when scrolled in view
+    let autoRotateInterval;
+
+    function startAutoRotate() {
+        clearInterval(autoRotateInterval); // clear any existing interval
+        autoRotateInterval = setInterval(nextProject, duration);
+    }
+
+    function stopAutoRotate() {
+        clearInterval(autoRotateInterval);
+    }
+    const demoContainer = document.querySelector('.demo-container');
+
+    let observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) { // when element is visible in viewport
+                // start auto rotation
+                startAutoRotate();
+                activateProject(currentIndex);
+            } else {
+                // stop auto rotation
+                stopAutoRotate();
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    // observe the demo container
+    observer.observe(demoContainer);
+
+    // stop auto-rotation when page is hidden (e.g. when user switches tab)
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            stopAutoRotate();
+        } else {
+            startAutoRotate();
+        }
+    });
+});
