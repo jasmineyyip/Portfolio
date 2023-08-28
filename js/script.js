@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextProject() {
-        if(!isPaused) {  // Only proceed if it's not paused
+        if(!isPaused) {  // only proceed if it's not paused
             let nextIndex = currentIndex + 1;
             if (nextIndex >= demoImgs.length) nextIndex = 0;
             activateProject(nextIndex);
@@ -227,19 +227,32 @@ document.addEventListener('DOMContentLoaded', function() {
     prevBtn.addEventListener('click', prevProject);
     nextBtn.addEventListener('click', nextProject);
 
-    // Toggle pause on current demo image click
+    // toggle pause on current demo image click
+    function togglePause() {
+        isPaused = !isPaused;
+        if (isPaused) {
+            stopAutoRotate();
+            let computedStyle = getComputedStyle(progresses[currentIndex]);
+            let currentWidth = parseFloat(computedStyle.width);
+            progresses[currentIndex].style.width = `${currentWidth}px`;  // set current width
+            pauseTime = Date.now();
+        } else {
+            animateProgress(currentIndex); // restart the progress bar animation
+            startAutoRotate();
+        }
+    }
+    
+    // toggle pause on current demo image click
     demoImgs.forEach(img => {
-        img.addEventListener('click', () => {
-            isPaused = !isPaused;
-            if (isPaused) {
-                stopAutoRotate();
-                let computedStyle = getComputedStyle(progresses[currentIndex]);
-                let currentWidth = parseFloat(computedStyle.width);
-                progresses[currentIndex].style.width = `${currentWidth}px`;  // Set current width
-                pauseTime = Date.now();
-            } else {
-                animateProgress(currentIndex); // Restart the progress bar animation
-                startAutoRotate();
+        img.addEventListener('click', togglePause);
+    });
+    
+    // toggle pause on current project description click
+    projects.forEach(desc => {
+        desc.addEventListener('click', (event) => {
+            const projectIndex = Array.from(projects).indexOf(event.target);
+            if (projectIndex === currentIndex) { // only act if it's the current project description
+                togglePause();
             }
         });
     });
