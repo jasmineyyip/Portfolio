@@ -4,20 +4,11 @@
 :root{
     /* colors */
     --soft-gray: #eaeade;
-    --charcoal-gray: #1f1f1f;
-    --gay: #2e2e2e;
-    --gayer: #262626;
-    --smoky-gray: #545454;;
     --steel-gray: #909090;
-    --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
-
-    /* breakpoints */
-    /* --xs: 480px;
-    --sm: 576px;
-    --md: 768px;
-    --lg: 992px;
-    --xl: 1200px;
-    --xxl: 1400px; */
+    --smoky-gray: #545454;
+    --dark-gray: #2e2e2e;
+    --darker-gray: #262626;
+    --charcoal-gray: #1f1f1f;
 }
 
 *{
@@ -298,7 +289,7 @@ a.var-1:hover::before {
 
   .skill{
     color: var(--steel-gray);
-    background-color: var(--gay);
+    background-color: var(--dark-gray);
     border-radius: 15px;
     padding: 0 12px;
     margin: 10px 10px 0 0;
@@ -320,15 +311,15 @@ a.var-1:hover::before {
   .link.external a.var-2:hover i {
     padding-left: 5px;
     transform: translateX(5px);
-    transition: transform 0.3s ease-in-out; /* This ensures smooth movement */
+    transition: transform 0.3s ease-in-out;
  }
 
 /* project */
 /* demo slider */
 .demo-wrapper {
     display: flex;
-    align-items: center; /* Vertically center aligns children */
-    justify-content: center; /* Horizontally center aligns children */
+    align-items: center; 
+    justify-content: center;
 }
 
 .demo-container {
@@ -450,11 +441,11 @@ a.var-1:hover::before {
     }
 
 .prev {
-    left: -60px; /* Move it outside the image to the left */
+    left: -60px;
 }
 
 .next {
-    right: 40px; /* Move it outside the image to the right */
+    right: 40px;
 }
 
 /* other projects */
@@ -475,13 +466,13 @@ a.var-1:hover::before {
 .project.var-1 {
     padding: 20px;
     box-sizing: border-box;
-    background-color: var(--gay);
+    background-color: var(--dark-gray);
     border-radius: 10px;
     min-height: 300px;
 }
 
 .trapezoid {
-	border-bottom: 15px solid var(--gay);
+	border-bottom: 15px solid var(--dark-gray);
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
 	height: 0;
@@ -542,11 +533,11 @@ a.var-1:hover::before {
 .project.var-1:hover {
     transform: scale(var(--scale, 1)) translateY(-5px); /* fallback scale is 1 */
     transition: 0.3s ease; /* smooth movement */
-    background-color: var(--gay);
+    background-color: var(--dark-gray);
 }
 
 .project.var-1:hover .trapezoid{
-    border-bottom: 15px solid var(--gay);
+    border-bottom: 15px solid var(--dark-gray);
     transition: 0.3s ease;
 }
 
@@ -759,14 +750,14 @@ ul.v-tab li .links i{
 .contact-wrapper .btn button{
     width: 100%;
     height: 2rem;
-    background-color: var(--gay);
+    background-color: var(--dark-gray);
     color: var(--steel-gray);
     margin-top: 40px;
     transition: 0.3s ease;
 }
 
 .contact-wrapper .btn button:hover{
-    color: var(--gay);
+    color: var(--dark-gray);
     background-color: var(--steel-gray);
 }
 
