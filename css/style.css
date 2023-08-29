@@ -768,7 +768,6 @@ footer{
 }
 
 footer p{
-    font-size: 13px;
     color: var(--steel-gray);
 }
 
@@ -882,7 +881,7 @@ footer p{
 }
 
 @media only screen and (max-width: 768px) {
-    section {
+    section:not(:last-of-type) {
         padding: 10px 0 50px 0;
     }
 
@@ -901,7 +900,7 @@ footer p{
 
     .v-tabs .menu {
         display: flex;
-        overflow-x: auto;
+        overflow-x: scroll;
         margin-bottom: 30px;
         white-space: nowrap;  /* ensures that the tabs won't wrap into the next line */
     }
@@ -1033,7 +1032,7 @@ footer p{
     }
 
     footer p{
-        font-size: 11px;
+        font-size: 12px;
         line-height: 4rem;
     }
 }
