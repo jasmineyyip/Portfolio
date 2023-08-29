@@ -761,7 +761,13 @@ ul.v-tab li .links i{
     height: 2rem;
     background-color: var(--gay);
     color: var(--steel-gray);
-    margin-top: 20px;
+    margin-top: 40px;
+    transition: 0.3s ease;
+}
+
+.contact-wrapper .btn button:hover{
+    color: var(--gay);
+    background-color: var(--steel-gray);
 }
 
 footer{
