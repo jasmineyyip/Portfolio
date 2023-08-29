@@ -49,14 +49,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // add click event to each navigation link
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
             // remove active class from all links
             navLinks.forEach(lnk => lnk.classList.remove('active'));
 
             // add active class to the clicked link
             link.classList.add('active');
+
+            // scroll to the corresponding section
+            const targetId = link.getAttribute('href').substring(1); // remove the '#' from the href attribute
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const offsetPosition = targetElement.offsetTop - 100; // offset header height
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
         });
     });
+
 
     // create the IntersectionObserver
     const options = {
