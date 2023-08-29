@@ -6,6 +6,7 @@
     --soft-gray: #eaeade;
     --charcoal-gray: #1f1f1f;
     --gay: #2e2e2e;
+    --gayer: #262626;
     --smoky-gray: #545454;;
     --steel-gray: #909090;
     --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
@@ -456,6 +457,92 @@ a.var-1:hover::before {
     right: 40px; /* Move it outside the image to the right */
 }
 
+/* other projects */
+.archive-container {
+    position: relative;
+    margin: auto;
+    padding: 50px;
+    flex: 1;
+  }
+
+.other-projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 items per row */
+    gap: 40px 20px; /* adjust for spacing between items */
+}
+
+.project.var-1 {
+    padding: 20px; /* adjust for inner spacing of items */
+    box-sizing: border-box;
+    background-color: var(--gayer);
+    border-radius: 10px;
+    min-height: 250px;
+}
+
+.trapezoid {
+	border-bottom: 15px solid var(--gayer);
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	height: 0;
+	width: 100px;
+    position: absolute;
+    left: 30px;
+    transform: translateY(-35px);
+} 
+
+.project.var-1 .project-description {
+    padding: 10px;
+}
+
+.project.var-1 .project-description h4, p {
+    color: var(--smoky-gray)
+}
+
+.project.var-1 .project-description h3 {
+    color: var(--steel-gray);
+}
+
+/* pop up effect */
+.project-wrapper {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.5s; /* speed of the popping up */
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* hover effect on project items */
+.project.var-1:hover {
+    transform: scale(var(--scale, 1)) translateY(-5px); /* fallback scale is 1 */
+    transition: 0.3s ease; /* smooth movement */
+    background-color: var(--gay);
+}
+
+.project.var-1:hover .trapezoid{
+    border-bottom: 15px solid var(--gay);
+    transition: 0.3s ease; /* This ensures smooth movement */
+}
+
+.project.var-1:hover .project-description h3 {
+    color: var(--soft-gray);
+}
+
+.project.var-1:hover .project-description h4 {
+    color: var(--steel-gray);
+}
+
+.project.var-1:hover .project-description p {
+    color: var(--steel-gray);
+}
 
 /* leadership */
 #leadership .img img{
@@ -627,6 +714,10 @@ ul.v-tab li .links i{
 
     ul.v-tab li .content {
         grid-template-columns: 100%; 
+    }
+
+    .other-projects {
+        grid-template-columns: 1fr 1fr; /* 2 items per row */
     }
 }
 
@@ -803,6 +894,11 @@ ul.v-tab li .links i{
     .timeline-container {
         width: 96%;
       }
+
+    /* archive proj 1/row */
+    .other-projects {
+        grid-template-columns: 1fr; /* 1 item per row */
+    }
 }
 
 @media screen and (max-width: 480px){

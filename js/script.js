@@ -135,17 +135,26 @@ window.addEventListener('scroll', function() {
         const lastDotTop = timelineEntry.last().find(timelineDot).offset().top,
               progressTop = lastDotTop + lastScrollY - $(window).scrollTop(),
               progressOffset = timelineProgress.offset().top + lastScrollY - $(window).scrollTop();
-
+    
         // calculate the new height based on the scroll position and apply
         const newHeight = Math.min(progressTop, lastScrollY + $(window).outerHeight() / 2) - progressOffset;
         timelineProgress.css({ height: `${newHeight}px` });
-
+    
         // add/remove class based on the position of the dot
         timelineEntry.each(function() {
             const dotTop = $(this).find(timelineDot).offset().top;
-            $(this).toggleClass('js-active', (dotTop + lastScrollY - $(window).scrollTop()) < lastScrollY + 0.5 * $(window).outerHeight());
+    
+            // Here we add an extra condition to check whether the element has the 'js-triggered' class
+            if ((dotTop + lastScrollY - $(window).scrollTop()) < lastScrollY + 0.5 * $(window).outerHeight()) {
+                if (!$(this).hasClass('js-triggered')) {
+                    $(this).addClass('js-active js-triggered');
+                }
+            } else {
+                // Optional: if you want to remove 'js-active' class when it's out of view
+                // $(this).removeClass('js-active');
+            }
         });
-    }
+    }    
 
     function updateLayout() {
         if (!isAnimating) {
@@ -366,4 +375,35 @@ document.addEventListener('DOMContentLoaded', function() {
             rearrangeForDesktop();
         }
     });
+});
+
+/* archive project item pop up effect */
+document.addEventListener('DOMContentLoaded', function() {
+    let gridItems = document.querySelectorAll('.project-wrapper'); 
+
+    let observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            // If the item is in the viewport
+            if (entry.isIntersecting) {
+                let delay = (parseInt(entry.target.getAttribute('data-index')) || 0) * 0.1; 
+                entry.target.style.animation = `popUp 0.5s forwards ${delay}s`;
+                entry.target.dataset.scale = '1';  // Store the scale value in a data attribute
+            }            
+        });
+    }, {
+        threshold: 0.1  // This means when at least 10% of the item is visible
+    });
+
+    gridItems.forEach((item, index) => {
+        // Set a data attribute to store the order/index of the grid item
+        item.setAttribute('data-index', index);
+        observer.observe(item);
+    });
+
+    gridItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.setProperty('--scale', this.dataset.scale || '1');
+        });
+    });
+    
 });
