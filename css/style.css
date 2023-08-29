@@ -27,9 +27,12 @@ p,a{
 
 html{
     background: var(--charcoal-gray);
-    overflow-x: hidden;
     scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
+}
+
+body{
+    overflow-x: hidden;
 }
 
 header{
@@ -127,9 +130,9 @@ section h1{
 
 a.var-1, a.var-2 {
     position: relative;
-    text-decoration: none; /* Remove the default underline */
+    text-decoration: none; /* remove the default underline */
     color: var(--soft-gray);
-    overflow: hidden; /* Hide the overflowing part of the pseudo-element */
+    overflow: hidden; /* hide the overflowing part of the pseudo-element */
 }
 
 a.var-1::before, a.var-2::before {
@@ -138,7 +141,7 @@ a.var-1::before, a.var-2::before {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 1px; /* Adjust the thickness of the underline as needed */
+    height: 1px; /* adjust the thickness of the underline as needed */
     background-color: var(--soft-gray);
     transition: width 0.3s;
 }
@@ -765,6 +768,7 @@ footer{
     line-height: 5rem;
     text-align: center;
     margin: auto;
+    width: 100%;
 }
 
 footer p{
@@ -815,6 +819,10 @@ footer p{
     header .navbar a:hover{
         color: var(--charcoal-gray);
     }
+
+    .timeline-container {
+        width: 96%;
+      }
 
     .line {
         left: 0;
@@ -904,6 +912,18 @@ footer p{
         margin-bottom: 30px;
         white-space: nowrap;  /* ensures that the tabs won't wrap into the next line */
     }
+
+    /* hide scroll bar for Webkit browsers like Chrome, Safari */
+    .v-tabs .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .v-tabs .menu {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer 11 */
+        -ms-overflow-style: none; 
+    }
+
 
     /* make vertical line horizontal */
     .v-tabs .menu::before {
@@ -1032,14 +1052,7 @@ footer p{
     }
 
     footer p{
-        font-size: 12px;
         line-height: 4rem;
-    }
-}
-  
-@media (min-width: 768px) and (max-width: 992px) {
-    .timeline-container {
-        width: 750px;
     }
 }
 
