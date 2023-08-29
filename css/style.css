@@ -133,12 +133,26 @@ section h1{
     line-height: 1.8rem;
 }
 
-.details a{
+a.var-1, a.var-2 {
+    position: relative;
+    text-decoration: none; /* Remove the default underline */
     color: var(--soft-gray);
+    overflow: hidden; /* Hide the overflowing part of the pseudo-element */
 }
 
-.details a:hover{
-    text-decoration: underline;
+a.var-1::before, a.var-2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px; /* Adjust the thickness of the underline as needed */
+    background-color: var(--soft-gray);
+    transition: width 0.3s;
+}
+
+a.var-1:hover::before {
+    width: 100%;
 }
 
 /* experience */
@@ -265,14 +279,14 @@ section h1{
   }
 
   .description p {
-    position: relative;  /* Set to relative so the child (icon) can be positioned absolutely within */
-    padding-left: 20px;  /* Space to accommodate the icon and a bit of margin */
+    position: relative;  /* set to relative so the child (icon) can be positioned absolutely within */
+    padding-left: 20px;  /* space to accommodate the icon and a bit of margin */
   }
 
    .description i {
-        position: absolute;  /* Position the icon absolutely within the parent */
-        left: 0;  /* Align to the left of the parent */
-        top: 7px;  /* Align to the top of the parent */
+        position: absolute;  /* position the icon absolutely within the parent */
+        left: 0;  /* align to the left of the parent */
+        top: 7px;  /* align to the top of the parent */
     }
 
   .skills {
@@ -293,19 +307,19 @@ section h1{
     text-align: center;
   }
 
-  .link.external a {
-    text-decoration: none;
-    color: var(--steel-gray);
-    transition: 0.3s ease;
-  }
-
-  .link.external a:hover {
-    color: var(--soft-gray);
+  .link.external span {
+    padding-right: 10px;
   }
 
   .link.external i {
-    padding-left: 10px;
+    top: 2px;
   }
+
+  .link.external a.var-2:hover i {
+    padding-left: 5px;
+    transform: translateX(5px);
+    transition: transform 0.3s ease-in-out; /* This ensures smooth movement */
+ }
 
 /* project */
 /* demo slider */
@@ -710,6 +724,14 @@ ul.v-tab li .links i{
         padding: 10px 0 50px 0;
     }
 
+    #about {
+        grid-template-columns: 1fr; 
+    }
+
+    .wrapper{
+        padding-bottom: 10px;
+    }
+
     /* vertical tabs turn horizontal; description collapse to the bottom */
     .v-tabs {
         margin: 30px auto 0;
@@ -781,16 +803,6 @@ ul.v-tab li .links i{
     .timeline-container {
         width: 96%;
       }
-}
-
-@media screen and (max-width: 576px){
-    #about {
-        grid-template-columns: 1fr; 
-    }
-
-    .wrapper{
-        padding-bottom: 10px;
-    }
 }
 
 @media screen and (max-width: 480px){

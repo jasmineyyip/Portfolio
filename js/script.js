@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // create the IntersectionObserver
     const options = {
-        threshold: 0.7 // 70% of the section is in view
+        threshold: 0.5 // 50% of the section is in view
     };
     const observer = new IntersectionObserver(handleIntersection, options);
 
@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    /* overly complicating things */
+    /* js-style rearrangement of html elements for mobile view */
     function rearrangeForMobile() {
         const demoContainer = document.querySelector('.demo-container');
         const demoImages = document.querySelectorAll('.demo-img img');
