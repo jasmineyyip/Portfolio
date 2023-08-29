@@ -92,7 +92,7 @@ header .icons #menu-bars{
     display: none;
 }
 
-body {
+.main-container {
     margin: auto;
     width: 80%;
 }
@@ -103,7 +103,7 @@ body {
     transition: opacity 0.5s, transform 0.5s;
 }
 
-section {
+section:not(:last-of-type) {
     padding: 10px 0 100px 0;
 }
 
@@ -581,7 +581,7 @@ a.var-1:hover::before {
 
 .v-tabs {
     position: relative;
-    margin: 50px auto 0;
+    margin: 50px auto 20px;
 }
 
 .v-tabs .menu {
@@ -714,6 +714,10 @@ ul.v-tab li .links i{
 }
 
 /* contact */
+#contact {
+    padding-bottom: 40px;
+}
+
 .contact-wrapper {
     padding-top: 20px;
     display: grid;
@@ -760,9 +764,16 @@ ul.v-tab li .links i{
     margin-top: 20px;
 }
 
-#contact{
-    padding-bottom: 0;
-  }
+footer{
+    line-height: 5rem;
+    text-align: center;
+    margin: auto;
+}
+
+footer p{
+    font-size: 13px;
+    color: var(--steel-gray);
+}
 
 /* media queries */
 
@@ -984,13 +995,21 @@ ul.v-tab li .links i{
         font-size: 1.8rem;
     }
 
+    header .logo img{
+        max-width: 2.5rem;
+    }
+
     .icons i, 
     .icons a{
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     header{
         padding: 1rem 2rem;
+    }
+
+    #about {
+        padding-top: 8rem;
     }
 
     .item .details {
@@ -1011,7 +1030,15 @@ ul.v-tab li .links i{
     .contact-form input, textarea {
         font-size: 0.8rem;
     }
-    
+
+    #contact {
+        padding-bottom: 0;
+    }
+
+    footer p{
+        font-size: 11px;
+        line-height: 4rem;
+    }
 }
   
 @media (min-width: 768px) and (max-width: 992px) {
