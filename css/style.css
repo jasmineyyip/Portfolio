@@ -293,6 +293,7 @@ a.var-1:hover::before {
   .skills {
     display: flex;
     flex-wrap: wrap;
+    padding-top: 10px;
   }
 
   .skill{
@@ -414,7 +415,6 @@ a.var-1:hover::before {
   .project .extra-info {
     color: var(--smoky-gray);
     line-height: 1.8rem;
-    padding-top: 0.8rem;
   }
   
   .project .progress-bar {
@@ -475,13 +475,13 @@ a.var-1:hover::before {
 .project.var-1 {
     padding: 20px;
     box-sizing: border-box;
-    background-color: var(--gayer);
+    background-color: var(--gay);
     border-radius: 10px;
     min-height: 300px;
 }
 
 .trapezoid {
-	border-bottom: 15px solid var(--gayer);
+	border-bottom: 15px solid var(--gay);
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
 	height: 0;
@@ -497,11 +497,11 @@ a.var-1:hover::before {
 
 .project.var-1 .project-description h4,
 .project.var-1 .project-description p {
-    color: var(--smoky-gray)
+    color: var(--steel-gray)
 }
 
 .project.var-1 .project-description h3 {
-    color: var(--steel-gray);
+    color: var(--soft-gray);
 }
 
 .project.var-1 .extra-info {
@@ -509,11 +509,15 @@ a.var-1:hover::before {
     padding: 0 10px 10px 10px;
   }
 
+  .project.var-1 .skills{
+    padding-top: 0;
+  }
+
   .project.var-1 .extra-info .skill {
     background: none;
     height: 1rem;
     padding: 0;
-    color: var(--smoky-gray);
+    color: var(--steel-gray);
   }
 
 /* pop up effect */
@@ -543,17 +547,7 @@ a.var-1:hover::before {
 
 .project.var-1:hover .trapezoid{
     border-bottom: 15px solid var(--gay);
-    transition: 0.3s ease; /* This ensures smooth movement */
-}
-
-.project.var-1:hover .project-description h3 {
-    color: var(--soft-gray);
-}
-
-.project.var-1:hover .project-description h4,
-.project.var-1:hover .project-description p,
-.project.var-1:hover  .extra-info .skill {
-    color: var(--steel-gray);
+    transition: 0.3s ease;
 }
 
 /* leadership */
@@ -727,24 +721,13 @@ ul.v-tab li .links i{
     gap: 80px;
 }
 
-.contact-form .row {
-    display: flex;
-    justify-content: space-between;
+.contact-form .row.first {
+    display: grid;
+    grid-template-columns: 30% 60%;
+    gap: 10%;
     padding-bottom: 40px;
 }
   
-/* Floating column for labels: 25% width */
-.col-30 {
-    float: left;
-    width: 30%;
-  }
-  
-  /* Floating column for inputs: 75% width */
-  .col-60 {
-    float: right;
-    width: 60%;
-  }
-
 .contact-form span {
     color: var(--steel-gray);
     font-size: 12px;
@@ -774,8 +757,12 @@ ul.v-tab li .links i{
     height: 2rem;
     background-color: var(--gay);
     color: var(--steel-gray);
+    margin-top: 20px;
 }
 
+#contact{
+    padding-bottom: 0;
+  }
 
 /* media queries */
 
@@ -979,12 +966,52 @@ ul.v-tab li .links i{
     .other-projects .project {
         min-height: 250px;
     }
+
+    /* contact */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
 }
 
 @media screen and (max-width: 480px){
+    p,a{
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+    }
+
+    section h1{
+        font-size: 1.8rem;
+    }
+
+    .icons i, 
+    .icons a{
+        font-size: 1.2rem;
+    }
+
     header{
         padding: 1rem 2rem;
     }
+
+    .item .details {
+        width: auto;
+        margin: -65px 0 0 30px
+      }
+
+      .project-description p {
+        line-height: 1.5rem;
+      }
+
+    .contact-form .row.first {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 40px;
+    }
+
+    .contact-form input, textarea {
+        font-size: 0.8rem;
+    }
+    
 }
   
 @media (min-width: 768px) and (max-width: 992px) {
