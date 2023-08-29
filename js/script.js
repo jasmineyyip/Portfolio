@@ -9,7 +9,7 @@ menu.onclick = () => {
 
 /* typewriter effect with alterating text */
 var typed = new Typed(".auto-type", {
-    strings: ["Web Developer.", "Computer Science student.", "Problem Solver.", "Rock Climber."],
+    strings: ["Web Developer.", "Computer Science student.", "Problem Solver.", "Innovator.", "Rock Climber."],
     typeSpeed: 150,
     backSpeed: 100,
     loop: true
@@ -168,9 +168,9 @@ window.addEventListener('scroll', function() {
 document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     const demoImgs = document.querySelectorAll('.demo-img img');
-    const projects = document.querySelectorAll('.project-description');
+    const projects = document.querySelectorAll('.project-description.clickable');
     const progresses = document.querySelectorAll('.progress-var-1');
-    const extraInfos = document.querySelectorAll('.extra-info');
+    const extraInfos = document.querySelectorAll('.extra-info.retractable');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
     const duration = 18000; // 18 sseconds

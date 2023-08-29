@@ -71,18 +71,18 @@ header .navbar a:hover{
     color: var(--soft-gray);
 }
 
-header .icons i, 
-header .icons a{
+.icons i, 
+.icons a{
     cursor: pointer;
-    margin: 0 0.3rem;
+    margin: 0 0.2rem;
     line-height: 4rem;
     text-align: center;
     font-size: 1.5rem;
     color: var(--steel-gray);
 }
 
-header .icons i:hover, 
-header .icons a:hover{
+.icons i:hover, 
+.icons a:hover{
     color: var(--soft-gray);
     transform: rotate(360deg);
     transition: all 1s ease;
@@ -104,7 +104,7 @@ body {
 }
 
 section {
-    padding: 10px 0 70px 0;
+    padding: 10px 0 100px 0;
 }
 
 section h1{
@@ -461,6 +461,7 @@ a.var-1:hover::before {
 .archive-container {
     position: relative;
     margin: auto;
+    width: 100%;
     padding: 50px;
     flex: 1;
   }
@@ -472,11 +473,11 @@ a.var-1:hover::before {
 }
 
 .project.var-1 {
-    padding: 20px; /* adjust for inner spacing of items */
+    padding: 20px;
     box-sizing: border-box;
     background-color: var(--gayer);
     border-radius: 10px;
-    min-height: 250px;
+    min-height: 300px;
 }
 
 .trapezoid {
@@ -491,16 +492,29 @@ a.var-1:hover::before {
 } 
 
 .project.var-1 .project-description {
-    padding: 10px;
+    padding: 0 10px;
 }
 
-.project.var-1 .project-description h4, p {
+.project.var-1 .project-description h4,
+.project.var-1 .project-description p {
     color: var(--smoky-gray)
 }
 
 .project.var-1 .project-description h3 {
     color: var(--steel-gray);
 }
+
+.project.var-1 .extra-info {
+    display: block;
+    padding: 0 10px 10px 10px;
+  }
+
+  .project.var-1 .extra-info .skill {
+    background: none;
+    height: 1rem;
+    padding: 0;
+    color: var(--smoky-gray);
+  }
 
 /* pop up effect */
 .project-wrapper {
@@ -536,11 +550,9 @@ a.var-1:hover::before {
     color: var(--soft-gray);
 }
 
-.project.var-1:hover .project-description h4 {
-    color: var(--steel-gray);
-}
-
-.project.var-1:hover .project-description p {
+.project.var-1:hover .project-description h4,
+.project.var-1:hover .project-description p,
+.project.var-1:hover  .extra-info .skill {
     color: var(--steel-gray);
 }
 
@@ -707,6 +719,66 @@ ul.v-tab li .links i{
     top: 1px; 
 }
 
+/* contact */
+.contact-wrapper {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.contact-form .row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+  
+/* Floating column for labels: 25% width */
+.col-30 {
+    float: left;
+    width: 30%;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-60 {
+    float: right;
+    width: 60%;
+  }
+
+.contact-form span {
+    color: var(--steel-gray);
+    font-size: 12px;
+    line-height: 2rem;
+}
+
+.contact-form ::placeholder{
+    color: var(--smoky-gray);
+}
+
+.contact-form input, textarea {
+    background: none;
+    border-bottom: 1px solid var(--steel-gray);
+    height: 2rem;
+    color: var(--soft-gray);
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.contact-wrapper .bio{
+    color: var(--steel-gray);
+    line-height: 1.8rem;
+}
+
+.contact-wrapper .btn button{
+    width: 100%;
+    height: 2rem;
+    background-color: var(--gay);
+    color: var(--steel-gray);
+}
+
+
+/* media queries */
+
 @media screen and (max-width: 1200px){
     #leadership .img img{
         display: none;
@@ -808,6 +880,10 @@ ul.v-tab li .links i{
     .project {
         padding: 2rem 0 5rem 0;
     }
+
+    .archive-container {
+        padding: 0;
+      }
 }
 
 @media only screen and (max-width: 768px) {
@@ -898,6 +974,10 @@ ul.v-tab li .links i{
     /* archive proj 1/row */
     .other-projects {
         grid-template-columns: 1fr; /* 1 item per row */
+    }
+
+    .other-projects .project {
+        min-height: 250px;
     }
 }
 
