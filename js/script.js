@@ -1,8 +1,19 @@
 /* hamburger menu */
 let menu = document.querySelector('#menu-bars');
 let navbar = document.querySelector('.navbar');
+let navLinks = document.querySelectorAll('.navbar a');  // select all anchor tags inside .navbar
 
 menu.onclick = () => {
+    toggleMenu();
+}
+
+// add click event listener to each navigation link
+navLinks.forEach(link => link.addEventListener('click', () => {
+    toggleMenu();
+}));
+
+// function to toggle menu
+function toggleMenu() {
     menu.classList.toggle('fa-times');
     navbar.classList.toggle('active');
 }
