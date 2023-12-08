@@ -294,8 +294,8 @@ a.var-1:hover::before {
     color: var(--steel-gray);
     background-color: var(--dark-gray);
     border-radius: 15px;
-    padding: 0 12px;
-    margin: 10px 10px 0 0;
+    padding: 0 15px;
+    margin: 10px 8px 0 0;
     font-size: 12px;
   }
 
