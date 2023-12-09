@@ -936,7 +936,7 @@ footer p{
         background-color: var(--steel-gray);
         z-index: -1;
         top: calc(100% - 10px);
-        width: 740px;
+        width: 800px;
     }
 
     .v-tabs .menu div {
@@ -965,7 +965,7 @@ footer p{
     }
 
     .v-tabs .menu div span.light {
-        width: calc(100%);
+        width: calc(90%);
         height: 2px;
         left: 50%;
         transform: translateX(-50%);
