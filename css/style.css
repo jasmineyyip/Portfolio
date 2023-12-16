@@ -675,7 +675,7 @@ a.var-1:hover::before {
 }
 
 /* extracurriculars */
-#ecs .img img{
+#ecs .org-img img{
     width: 150px;
     padding-top: 50px;
 }
@@ -908,7 +908,7 @@ footer p{
 /* media queries */
 
 @media screen and (max-width: 1200px){
-    #ecs.img img{
+    #ecs .org-img img{
         display: none;
     }
 
@@ -1031,12 +1031,12 @@ footer p{
 }
 
 @media only screen and (max-width: 768px) {
-    .awards{
+    #awards{
         padding-top: 20px;
         width: 100%;
     }
 
-    .awards p {
+    #awards p {
         text-align: left;
     }
 
