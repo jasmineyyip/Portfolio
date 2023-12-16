@@ -51,7 +51,7 @@ header{
 }
 
 .yip-logo{
-    width: 160px;
+    width: 120px;
 }
 
 header .logo img{
@@ -674,6 +674,52 @@ a.var-1:hover::before {
     transition: 0.3s ease;
 }
 
+/* design */
+.design{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  align-items: center;
+}
+
+.design h2{
+  color: var(--soft-gray);
+  padding-bottom: 10px;
+}
+
+.design p{
+  color: var(--steel-gray);
+  line-height: 1.8rem;
+}
+
+.design span{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px; /* Optional: adds some space between the icon and the text */
+}
+
+.design .description{
+  width: calc(40% - 30px);
+  margin-right: 40px;
+
+}
+
+.design .description p{
+  padding-left: 0;
+  margin: 0;
+  display: grid;
+}
+
+.design .description i{
+  color: var(--steel-gray);
+  position: relative;
+  margin-right: 10px; /* Adds some space between the icon and the text */
+}
+
+iframe {
+  width: calc(60% - 10px);
+}
+
 /* extracurriculars */
 #ecs .org-img img{
     width: 150px;
@@ -820,14 +866,9 @@ ul.v-tab li .link{
     margin: 3px 20px 0 0;
 }
 
-ul.v-tab li .links a{
-    color: var(--steel-gray);
-    transition: 0.3s ease;
-    text-decoration: none;
-}
-
-ul.v-tab li .links a:hover{
+ul.v-tab li a{
     color: var(--soft-gray);
+    transition: 0.3s ease;
 }
 
 ul.v-tab li .links i{
@@ -1027,7 +1068,16 @@ footer p{
 
     .archive-container {
         padding: 0;
-      }
+    }
+
+    .design .description{
+      margin-bottom: 20px;
+    }
+
+    .design .description, iframe {
+      width: 100%;
+      margin-right: 0;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1087,7 +1137,7 @@ footer p{
         background-color: var(--steel-gray);
         z-index: -1;
         top: calc(100% - 10px);
-        width: 800px;
+        width: 770px;
     }
 
     .v-tabs .menu div {
@@ -1186,11 +1236,15 @@ footer p{
     .item .details {
         width: auto;
         margin: -65px 0 0 30px
-      }
+    }
 
-      .project-description p {
+    .project-description p {
         line-height: 1.5rem;
-      }
+    }
+
+    .design p{
+        line-height: 1.5rem;
+    }
 
     .contact-form .row.first {
         display: grid;
