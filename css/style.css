@@ -129,7 +129,7 @@ section h1{
 }
 
 #awards{
-    padding-bottom: 50px;
+    padding-bottom: 100px;
 }
 
 #awards p{
@@ -1082,8 +1082,8 @@ footer p{
 
 @media only screen and (max-width: 768px) {
     #awards{
-        padding-top: 20px;
         width: 100%;
+        padding-bottom: 70px;
     }
 
     #awards p {
