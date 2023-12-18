@@ -129,7 +129,7 @@ section h1{
 }
 
 #awards{
-    padding-bottom: 100px;
+    padding-bottom: 80px;
 }
 
 #awards p{
@@ -146,22 +146,13 @@ a.var-1, a.var-2 {
     position: relative;
     text-decoration: none; /* remove the default underline */
     color: var(--soft-gray);
-    overflow: hidden; /* hide the overflowing part of the pseudo-element */
+    transition: all 0.5s ease;
+    border-bottom: 1px solid transparent;  /* <------ */
 }
 
-a.var-1::before, a.var-2::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px; /* adjust the thickness of the underline as needed */
-    background-color: var(--soft-gray);
-    transition: width 0.3s;
-}
-
-a.var-1:hover::before {
-    width: 100%;
+a.var-1:hover, a.var-2:hover {
+  color: var(--soft-gray);
+  border-bottom: 1px solid var(--soft-gray);  /* <------ */
 }
 
 /* Coded by Lorenzo Bocchi ~ www.be.net/LorenzoBocchi */
@@ -408,7 +399,7 @@ a.var-1:hover::before {
     padding-left: 20px;  /* space to accommodate the icon and a bit of margin */
   }
 
-   .description i {
+  #experience .description i {
         position: absolute;  /* position the icon absolutely within the parent */
         left: 0;  /* align to the left of the parent */
         top: 7px;  /* align to the top of the parent */
@@ -675,50 +666,64 @@ a.var-1:hover::before {
 }
 
 /* design */
-.design{
+.design {
   display: flex;
   flex-wrap: wrap;
-  padding: 20px 0;
+  padding-top: 30px;
   align-items: center;
 }
 
-.design h2{
+.design.cookie{
+  padding-top: 80px;
+}
+
+.design h2 {
   color: var(--soft-gray);
   padding-bottom: 10px;
 }
 
-.design p{
+.design p {
   color: var(--steel-gray);
   line-height: 1.8rem;
 }
 
-.design span{
+.design .icon{
+  width: 20px;
+}
+
+.design span {
   display: flex;
   align-items: flex-start;
   gap: 10px; /* Optional: adds some space between the icon and the text */
+  padding-bottom: 10px;
 }
 
-.design .description{
-  width: calc(40% - 30px);
+.design .description {
+  width: 40%; /* Updated width */
   margin-right: 40px;
-
 }
 
-.design .description p{
+.design .description p {
   padding-left: 0;
   margin: 0;
   display: grid;
 }
 
-.design .description i{
+.design .description .icon i {
   color: var(--steel-gray);
   position: relative;
   margin-right: 10px; /* Adds some space between the icon and the text */
 }
 
-iframe {
-  width: calc(60% - 10px);
+.design .figma {
+  width: 55%; /* Updated width for the image container */
 }
+
+.design .figma img {
+  width: 100%; /* Ensure the image takes the full width of its container */
+  height: auto; /* Maintain the aspect ratio */
+}
+
 
 /* extracurriculars */
 #ecs .org-img img{
@@ -1074,16 +1079,20 @@ footer p{
       margin-bottom: 20px;
     }
 
-    .design .description, iframe {
+    .design .description, .design .figma {
       width: 100%;
       margin-right: 0;
+    }
+
+    .design .figma{
+      padding-top: 20px;
     }
 }
 
 @media only screen and (max-width: 768px) {
     #awards{
         width: 100%;
-        padding-bottom: 70px;
+        padding-bottom: 60px;
     }
 
     #awards p {
