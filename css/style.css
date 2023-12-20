@@ -150,7 +150,7 @@ a.var-1, a.var-2 {
     border-bottom: 1px solid transparent;  /* <------ */
 }
 
-a.var-1:hover, a.var-2:hover {
+a.var-1:hover {
   color: var(--soft-gray);
   border-bottom: 1px solid var(--soft-gray);  /* <------ */
 }
