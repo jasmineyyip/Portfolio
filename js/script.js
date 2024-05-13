@@ -20,9 +20,9 @@ function toggleMenu() {
 
 /* typewriter effect with alterating text */
 var typed = new Typed(".auto-type", {
-    strings: ["a Computer Science student.", "a Developer.", "a UI/UX Designer.", "an Adventurer.", "an Innovator.", "a Trojan."],
-    typeSpeed: 200,
-    backSpeed: 60,
+    strings: ["a Computer Science student.", "a Developer.", "an Entrepreneur.", "a Trojan."],
+    typeSpeed: 100,
+    backSpeed: 50,
     loop: true
 })
 
