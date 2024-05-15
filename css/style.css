@@ -28,6 +28,11 @@ p,a{
     font-size: 0.95rem;
 }
 
+h3 {
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+}
+
 html{
     background: var(--charcoal-gray);
     scroll-padding-top: 5.5rem;
@@ -146,6 +151,7 @@ section h1{
   color: var(--smoky-gray);
   font-size: 40px;
   font-family: "Playfair Display", serif;
+  font-weight: 600;
 }
 
 .wrapper h1, .wrapper span {
@@ -319,6 +325,11 @@ a.var-1:hover {
     position: relative;
   }
 
+  .item h3 {
+      font-size: 25px;
+      padding-bottom: 5px;
+  }
+
   .item:nth-child(2n) {
     text-align: right;
   }
@@ -425,6 +436,11 @@ a.var-1:hover {
     color: var(--soft-gray);
   }
 
+  .description h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+  }
+
   .description p {
     position: relative;  /* set to relative so the child (icon) can be positioned absolutely within */
     padding-left: 20px;  /* space to accommodate the icon and a bit of margin */
@@ -526,7 +542,8 @@ a.var-1:hover {
   .project-description h3 {
     color: var(--steel-gray);
     cursor: pointer;
-    line-height: 3rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
   }
 
   .project-description p {
@@ -687,13 +704,13 @@ a.var-1:hover {
 /* hover effect on project items */
 .project.var-1:hover {
     transform: scale(var(--scale, 1)) translateY(-5px); /* fallback scale is 1 */
-    transition: 0.3s ease; /* smooth movement */
+    transition: 0.5s ease-in-out; /* smooth movement */
     background-color: var(--dark-gray);
 }
 
 .project.var-1:hover .trapezoid{
     border-bottom: 15px solid var(--dark-gray);
-    transition: 0.3s ease;
+    transition: 0.5s ease-in-out;
 }
 
 /* design */
@@ -790,6 +807,12 @@ a.var-1:hover {
     margin: 50px auto 20px;
 }
 
+.v-tabs .content span {
+   font-family: "Playfair Display", serif;
+   font-weight: 600;
+   font-size: 1.5rem;
+}
+
 .v-tabs .menu {
     position: relative;
 }
@@ -814,10 +837,6 @@ a.var-1:hover {
     transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.v-tabs .menu div span {
-    font-size: 0.9rem;
-}
-
 /* segment of line changes color */
 .v-tabs .menu div span.light {
     height: calc(100%); 
@@ -831,6 +850,10 @@ a.var-1:hover {
 
 .v-tabs .menu div.active span.light {
     background-color: var(--soft-gray);
+}
+
+.v-tabs .menu div span.org {
+  font-size: 0.9rem;
 }
 
 .v-tabs .menu div:hover,
@@ -868,11 +891,12 @@ ul.v-tab li .content {
 }
 
 ul.v-tab li span {
-    color: var(--steel-gray);
+    color: var(--soft-gray);
 }
 
 ul.v-tab li h3 {
-    color: var(--soft-gray);
+    color: var(--steel-gray);
+    font-size: 25px;
 }
 
 ul.v-tab li p {
