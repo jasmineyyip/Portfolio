@@ -6,12 +6,24 @@
 
 :root{
     /* colors */
-    --soft-gray: #eaeade;
+    --dirty-white: #e4e4e4;     /* background */
+    --lighter-gray: #dadada;
+    --light-gray: #c5c5c5;
     --steel-gray: #909090;
     --smoky-gray: #333333;
     --dark-gray: #262626;
-    --darker-gray: #262626;
     --charcoal-gray: #151515;
+
+    /* palete */
+    --dark-blue: #003459;
+    --light-blue: #007ea7;
+    --dark-purple: #3d348b;
+    --light-purple: #7678ed;
+    --mango: #ecb510;
+    --tangerine: #f18701;
+    --neon-orange: #f35b04;
+    --utube: #d83a3a;
+    --maroon: #cd486b;
 }
 
 *{
@@ -48,7 +60,7 @@ h3 {
 }
 
 html{
-    background: var(--charcoal-gray);
+    background: var(--dirty-white);
     scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
 }
@@ -64,7 +76,6 @@ body{
   width: 100%;
   height: 100%;
   z-index: 9999;
-  /* background-image: url('../assets/nnnoise.svg'); */
   pointer-events: none; 
 }
 
@@ -81,8 +92,7 @@ header{
     right: 0;
     width: 90%;
     margin: auto;
-    background: rgba(22, 22, 22, 0.5);
-    backdrop-filter: blur(10px);
+    background: var(--dirty-white);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -107,13 +117,13 @@ header .navbar a{
 
 header .navbar a.active,
 header .navbar a:hover{
-    color: var(--soft-gray);
+    color: var(--dark-gray)
 }
 
 .icons i, 
 .icons a{
     cursor: pointer;
-    margin: 0 0.2rem;
+    margin: 0 0.15rem;
     line-height: 4rem;
     text-align: center;
     font-size: 1.5rem;
@@ -122,9 +132,25 @@ header .navbar a:hover{
 
 .icons i:hover, 
 .icons a:hover{
-    color: var(--soft-gray);
+    color: var(--dark-gray);
     transform: rotate(360deg);
     transition: all 1s ease;
+}
+
+.icons i.fa-brands.fa-linkedin-in {
+  color: var(--dark-blue);
+}
+
+.icons i.fa-brands.fa-github {
+  color: var(--dark-purple);
+}
+
+.icons i.fa-brands.fa-instagram {
+  color: var(--maroon);
+}
+
+.icons i.fas.fa-bars {
+  margin-right: 0.5rem;
 }
 
 header .icons #menu-bars{
@@ -148,7 +174,7 @@ section:not(:last-of-type) {
 
 section h1{
     font-size: 2rem;
-    color: var(--soft-gray);
+    color: var(--dark-gray)
 }
 
 /* about */
@@ -162,8 +188,7 @@ section h1{
 
 /* typewriter effect with alterating text */
 .wrapper h2 {
-  color: var(--smoky-gray);
-  font-size: 40px;
+  color: var(--steel-gray);
   font-family: "Playfair Display", serif;
   font-weight: 600;
 }
@@ -192,14 +217,13 @@ section h1{
 a.var-1, a.var-2 {
     position: relative;
     text-decoration: none; /* remove the default underline */
-    color: var(--soft-gray);
+    color: var(--dark-gray);
     transition: all 0.5s ease;
     border-bottom: 1px solid transparent;  /* <------ */
 }
 
 a.var-1:hover {
-  color: var(--soft-gray);
-  border-bottom: 1px solid var(--soft-gray);  /* <------ */
+  border-bottom: 1px solid var(--dark-gray);  /* <------ */
 }
 
 /* Coded by Lorenzo Bocchi ~ www.be.net/LorenzoBocchi */
@@ -217,7 +241,7 @@ a.var-1:hover {
     width: 90px;
     height: 90px;
     border-radius: 90px;
-    background: #673AB7;
+    background: var(--dark-purple);
     -webkit-transition: all .25s cubic-bezier(.615,.19,.305,.91);
     -moz-transition: all .25s cubic-bezier(.615,.19,.305,.91);
     transition: all .25s cubic-bezier(.615,.19,.305,.91);
@@ -358,7 +382,7 @@ a.var-1:hover {
 
   .line {
     width: 2px;
-    background-color: #393935;
+    background-color: var(--steel-gray);
     position: absolute;
     top: 2px;
     left: 50%;
@@ -370,7 +394,7 @@ a.var-1:hover {
   .line .progress {
     width: 100%;
     height: 20%;
-    background-color: var(--soft-gray);
+    background-color: var(--dark-gray);
   }
   
   .marker {
@@ -399,7 +423,7 @@ a.var-1:hover {
   }
 
   .js-active .dot {
-    background-color: var(--soft-gray);
+    background-color: var(--light-blue);
   }
 
   .meta-container {
@@ -408,7 +432,7 @@ a.var-1:hover {
 
   .meta {
     margin: 10px 0 0;
-    color: var(--steel-gray);
+    color: var(--dark-gray);
   }
 
   .item .details {
@@ -442,12 +466,12 @@ a.var-1:hover {
 
   .company {
     margin-bottom: 2px;
-    color: var(--soft-gray);
+    color: var(--dark-gray);
   }
 
   .position {
     margin-bottom: 5px;
-    color: var(--soft-gray);
+    color: var(--dark-gray);
   }
 
   .description h2 {
@@ -473,9 +497,9 @@ a.var-1:hover {
   }
 
   .skill{
-    color: var(--steel-gray);
-    background-color: var(--dark-gray);
+    color: var(--dark-gray);
     border-radius: 15px;
+    border: solid 1.5px var(--dark-gray);
     padding: 0 15px;
     margin: 10px 8px 0 0;
     font-size: 12px;
@@ -494,9 +518,10 @@ a.var-1:hover {
   }
 
   .link.external a.var-2:hover i {
+    color: var(--dark-purple);
     padding-left: 5px;
     transform: translateX(5px);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
  }
 
 /* project */
@@ -554,14 +579,14 @@ a.var-1:hover {
   }
   
   .project-description h3 {
-    color: var(--steel-gray);
+    color: var(--light-gray);
     cursor: pointer;
     font-size: 1.5rem;
     line-height: 2.5rem;
   }
 
   .project-description p {
-    color: var(--smoky-gray);
+    color: var(--light-gray);
     line-height: 1.8rem;
   }  
 
@@ -573,20 +598,20 @@ a.var-1:hover {
   .project-description a {
     text-decoration: none;
     padding-right: 0.5rem;
-    color: var(--steel-gray);
+    color: var(--light-gray);
     transition: 0.3s ease;
   }
 
   .project-description a:hover {
-    color: var(--soft-gray);
+    color: var(--light-purple);
   }
 
-  .project-description.active h3 {
-    color: var(--soft-gray);
+  .project-description.active h3, .project-description.active h4 {
+    color: var(--dark-gray);
   }
 
   .project-description.active p {
-    color: var(--steel-gray);
+    color: var(--dark-gray);
   }
 
   .project .extra-info {
@@ -596,7 +621,7 @@ a.var-1:hover {
   
   .project .progress-bar {
     height: 5px;
-    background: var(--smoky-gray);
+    background: var(--light-gray);
     border-radius: 10px;
     margin-bottom: 10px;
   }
@@ -604,7 +629,7 @@ a.var-1:hover {
   .project .progress-var-1 {
     height: 5px;
     width: 0;
-    background: var(--soft-gray);
+    background: var(--dark-gray);
     border-radius: 10px;
   }
   
@@ -614,7 +639,7 @@ a.var-1:hover {
   
   .prev, .next {
     text-align: center;
-    color: var(--soft-gray);
+    color: var(--dark-purple);
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -674,11 +699,11 @@ a.var-1:hover {
 
 .project.var-1 .project-description h4,
 .project.var-1 .project-description p {
-    color: var(--steel-gray)
+    color: var(--steel-gray);
 }
 
 .project.var-1 .project-description h3 {
-    color: var(--soft-gray);
+    color: var(--lighter-gray);
 }
 
 .project.var-1 .extra-info {
@@ -740,7 +765,7 @@ a.var-1:hover {
 }
 
 .design h2 {
-  color: var(--soft-gray);
+  color: var(--dark-gray);
   padding-bottom: 10px;
 }
 
@@ -756,12 +781,12 @@ a.var-1:hover {
 .design span {
   display: flex;
   align-items: flex-start;
-  gap: 10px; /* Optional: adds some space between the icon and the text */
+  gap: 10px;
   padding-bottom: 10px;
 }
 
 .design .description {
-  width: 40%; /* Updated width */
+  width: 40%;
   margin-right: 40px;
 }
 
@@ -771,8 +796,11 @@ a.var-1:hover {
   display: grid;
 }
 
+.design .description p.award {
+  color: var(--dark-gray);
+}
+
 .design .description .icon i {
-  color: var(--steel-gray);
   position: relative;
   margin-right: 10px; /* Adds some space between the icon and the text */
 }
@@ -786,9 +814,14 @@ a.var-1:hover {
   height: auto; /* Maintain the aspect ratio */
 }
 
+i.fa-solid.fa-trophy {
+  color: var(--mango);
+}
+
 
 /* extracurriculars */
 #ecs .org-img img{
+    margin-left: 50px;
     width: 150px;
     padding-top: 50px;
 }
@@ -863,7 +896,7 @@ a.var-1:hover {
 }
 
 .v-tabs .menu div.active span.light {
-    background-color: var(--soft-gray);
+    background-color: var(--dark-gray);
 }
 
 .v-tabs .menu div span.org {
@@ -872,7 +905,7 @@ a.var-1:hover {
 
 .v-tabs .menu div:hover,
 .v-tabs .menu div.active {
-    color: var(--soft-gray);
+    color: var(--dark-gray);
 }
    
 ul.v-tab {
@@ -885,6 +918,8 @@ ul.v-tab {
 }
    
 ul.v-tab li {
+    width: fit-content;
+    max-width: 750px;
     opacity: 0;
     transform: translateX(50px);
     position: absolute;
@@ -905,10 +940,11 @@ ul.v-tab li .content {
 }
 
 ul.v-tab li span {
-    color: var(--soft-gray);
+    color: var(--dark-gray);
 }
 
 ul.v-tab li h3 {
+    line-height: 35px;
     color: var(--steel-gray);
     font-size: 25px;
 }
@@ -936,20 +972,31 @@ ul.v-tab li .links{
 }
 
 ul.v-tab li .link{
-    min-width: 150px; 
-    margin: 3px 20px 0 0;
+    margin: 3px 30px 0 0;
 }
 
 ul.v-tab li a{
-    color: var(--soft-gray);
+    color: var(--dark-gray);
     transition: 0.3s ease;
 }
 
 ul.v-tab li .links i{
-    color: var(--soft-gray);
+    color: var(--dark-gray);
     position: relative;
     padding-right: 1rem;
     top: 1px; 
+}
+
+ul.v-tab li .links i.fa-brands.fa-youtube {
+    color: var(--utube);
+}
+
+ul.v-tab li .links i.fa-brands.fa-instagram {
+    color: var(--maroon);
+}
+
+ul.v-tab li .links i.fa-solid.fa-bookmark {
+    color: var(--light-blue);
 }
 
 /* contact */
@@ -972,22 +1019,28 @@ ul.v-tab li .links i{
 }
   
 .contact-form span {
-    color: var(--steel-gray);
+    color: var(--dark-gray);
     font-size: 12px;
     line-height: 2rem;
 }
 
 .contact-form ::placeholder{
-    color: var(--smoky-gray);
+    color: var(--light-gray);
 }
 
 .contact-form input, textarea {
     background: none;
     border-bottom: 1px solid var(--steel-gray);
     height: 2rem;
-    color: var(--soft-gray);
+    color: var(--steel-gray);
     font-size: 0.95rem;
     width: 100%;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    height: auto; 
+    min-height: 2rem; 
 }
 
 .contact-wrapper .bio{
@@ -999,14 +1052,14 @@ ul.v-tab li .links i{
     width: 100%;
     height: 2rem;
     background-color: var(--dark-gray);
-    color: var(--steel-gray);
+    color: var(--dirty-white);
     margin-top: 40px;
     transition: 0.3s ease;
 }
 
 .contact-wrapper .btn button:hover{
-    color: var(--dark-gray);
-    background-color: var(--steel-gray);
+    color: var(--light-gray);
+    background-color: var(--charcoal-gray);
 }
 
 footer{
@@ -1054,7 +1107,7 @@ footer p{
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--soft-gray);
+        background: var(--dark-gray);
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     }
     
@@ -1066,11 +1119,12 @@ footer p{
     header .navbar a{
         display: block;
         margin: 1rem;
+        color: var(--light-gray);
     }
 
     header .navbar a.active,
     header .navbar a:hover{
-        color: var(--charcoal-gray);
+        color: var(--dirty-white);
     }
 
     .badge-container {
@@ -1189,7 +1243,7 @@ footer p{
     .v-tabs .menu {
         display: flex;
         overflow-x: scroll;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         white-space: nowrap;  /* ensures that the tabs won't wrap into the next line */
     }
 
@@ -1216,7 +1270,7 @@ footer p{
         background-color: var(--steel-gray);
         z-index: -1;
         top: calc(100% - 10px);
-        width: 768px;
+        width: 912px;
     }
 
     .v-tabs .menu div {
@@ -1254,7 +1308,7 @@ footer p{
 
     /* active tab */
     .v-tabs .menu div.active span.light {
-        background-color: var(--soft-gray);
+        background-color: var(--dark-gray);
     }
 
     .v-tabs .menu div {
