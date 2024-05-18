@@ -187,16 +187,15 @@ window.addEventListener('scroll', function() {
     }
 })(jQuery);
 
-/* project demo slider */
+// project demo slider
 document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
-    const demoImgs = document.querySelectorAll('.demo-img img');
+    const demoVideos = document.querySelectorAll('.demo-img video');
     const projects = document.querySelectorAll('.project-description.clickable');
     const progresses = document.querySelectorAll('.progress-var-1');
     const extraInfos = document.querySelectorAll('.extra-info.retractable');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
-    const duration = 18000; // 18 seconds
 
     function resetProgresses() {
         progresses.forEach(progress => {
@@ -205,59 +204,65 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function animateProgress(index) {
+    function animateProgress(index, duration) {
         resetProgresses();
-
         progresses[index].style.transition = `width ${duration}ms linear`;
         progresses[index].style.width = '100%';
     }
 
     function activateProject(index) {
-        demoImgs[currentIndex].classList.remove('active');
+        demoVideos[currentIndex].classList.remove('active');
+        demoVideos[currentIndex].pause();
+        demoVideos[currentIndex].currentTime = 0;
         projects[currentIndex].classList.remove('active');
         extraInfos[currentIndex].style.display = 'none';
 
         currentIndex = index;
 
-        demoImgs[currentIndex].classList.add('active');
+        demoVideos[currentIndex].classList.add('active');
         projects[currentIndex].classList.add('active');
         extraInfos[currentIndex].style.display = 'block';
 
-        animateProgress(currentIndex);
+        const duration = demoVideos[currentIndex].duration * 1000; // convert to milliseconds
+        animateProgress(currentIndex, duration);
+        demoVideos[currentIndex].play();
+
+        clearInterval(autoRotateInterval);
+        autoRotateInterval = setInterval(nextProject, duration);
     }
 
     function nextProject() {
         let nextIndex = currentIndex + 1;
-        if (nextIndex >= demoImgs.length) nextIndex = 0;
+        if (nextIndex >= demoVideos.length) nextIndex = 0;
         activateProject(nextIndex);
     }
 
     function prevProject() {
         let prevIndex = currentIndex - 1;
-        if (prevIndex < 0) prevIndex = demoImgs.length - 1;
+        if (prevIndex < 0) prevIndex = demoVideos.length - 1;
         activateProject(prevIndex);
     }
 
     function restartAutoRotate() {
         clearInterval(autoRotateInterval); // clear existing interval
         startAutoRotate(); // start a fresh one
-        animateProgress(currentIndex); // start the progress bar animation
+        const duration = demoVideos[currentIndex].duration * 1000; // convert to milliseconds
+        animateProgress(currentIndex, duration); // start the progress bar animation
     }
-    
-    demoImgs.forEach((img, index) => {
-        img.addEventListener('click', function() {
+
+    demoVideos.forEach((video, index) => {
+        video.addEventListener('click', function() {
             resetProgresses();
             restartAutoRotate();
         });
     });
-    
+
     projects.forEach((project, index) => {
         project.addEventListener('click', function() {
             resetProgresses();
             restartAutoRotate();
         });
     });
-    
 
     let isPaused = false;
 
@@ -271,8 +276,8 @@ document.addEventListener('DOMContentLoaded', function() {
         isPaused = !isPaused;
     }
 
-    demoImgs.forEach((img, index) => {
-        img.addEventListener('click', togglePause);
+    demoVideos.forEach((video, index) => {
+        video.addEventListener('click', togglePause);
     });
 
     projects.forEach((project, index) => {
@@ -295,12 +300,10 @@ document.addEventListener('DOMContentLoaded', function() {
         restartAutoRotate();
     });
 
-
-    // activate when scrolled in view
     let autoRotateInterval;
 
     function startAutoRotate() {
-        clearInterval(autoRotateInterval);
+        const duration = demoVideos[currentIndex].duration * 1000; // convert to milliseconds
         autoRotateInterval = setInterval(nextProject, duration);
     }
 
@@ -333,15 +336,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    /* activate all when in mobile view */
     function activateAllProjectsForMobile() {
-        demoImgs.forEach(img => img.classList.add('active'));
+        demoVideos.forEach(video => video.classList.add('active'));
         projects.forEach(project => project.classList.add('active'));
         extraInfos.forEach(info => (info.style.display = 'block'));
     }
 
     function deactivateAllProjectsForMobile() {
-        demoImgs.forEach(img => img.classList.remove('active'));
+        demoVideos.forEach(video => video.classList.remove('active'));
         projects.forEach(project => project.classList.remove('active'));
         extraInfos.forEach(info => (info.style.display = 'none'));
     }
@@ -362,14 +364,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    /* js-style rearrangement of html elements for mobile view */
     function rearrangeForMobile() {
         const demoContainer = document.querySelector('.demo-container');
-        const demoImages = document.querySelectorAll('.demo-img img');
+        const demoVideos = document.querySelectorAll('.demo-img video');
         const projects = document.querySelectorAll('.projects .project');
 
-        for (let i = 0; i < demoImages.length; i++) {
-            demoContainer.appendChild(demoImages[i]);
+        for (let i = 0; i < demoVideos.length; i++) {
+            demoContainer.appendChild(demoVideos[i]);
             if (projects[i]) {
                 demoContainer.appendChild(projects[i]);
             }
@@ -378,12 +379,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function rearrangeForDesktop() {
         const demoContainer = document.querySelector('.demo-container');
-        const demoImages = document.querySelectorAll('.demo-container > img');
+        const demoVideos = document.querySelectorAll('.demo-container > video');
         const projects = document.querySelectorAll('.demo-container > .project');
         const demoImgDiv = document.querySelector('.demo-img');
         const projectsDiv = document.querySelector('.projects');
 
-        demoImages.forEach(img => demoImgDiv.appendChild(img));
+        demoVideos.forEach(video => demoImgDiv.appendChild(video));
         projects.forEach(project => projectsDiv.appendChild(project));
     }
 
@@ -399,6 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 
 /* archive project item pop up effect */
 document.addEventListener('DOMContentLoaded', function() {

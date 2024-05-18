@@ -548,16 +548,16 @@ a.var-1:hover {
     padding-bottom: 30px;
   }
   
-  .demo-img img {
+  .demo-img video {
     width: 100%;
     height: 100%;
     display: none;
     object-fit: cover;
     border-radius: 15px;
   }
-  
-  .demo-img img.active {
-    display: block;
+
+  .demo-img video.active {
+      display: block;
   }
   
   .projects {
@@ -1055,6 +1055,7 @@ ul.v-tab li .links i.fa-solid.fa-bookmark {
     color: var(--dirty-white);
     margin-top: 40px;
     transition: 0.3s ease;
+    font-weight: 400;
 }
 
 .contact-wrapper .btn button:hover{
