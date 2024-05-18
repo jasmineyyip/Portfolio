@@ -23,7 +23,7 @@
     --tangerine: #f18701;
     --neon-orange: #f35b04;
     --utube: #d83a3a;
-    --maroon: #cd486b;
+    --maroon: #b01b43;
 }
 
 *{
@@ -1233,7 +1233,8 @@ footer p{
     }
 
     .wrapper{
-        padding-bottom: 10px;
+        min-height: 300px;
+        padding: 120px 0 10px 0;
     }
 
     /* vertical tabs turn horizontal; description collapse to the bottom */
@@ -1357,6 +1358,11 @@ footer p{
 
     header{
         padding: 1rem 2rem;
+    }
+
+    .wrapper{
+      min-height: 230px;
+      padding: 0 0 10px 0;
     }
 
     .badge-container{

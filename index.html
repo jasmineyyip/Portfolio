@@ -289,9 +289,9 @@
             <button class="prev"><i class="fa-solid fa-circle-arrow-left"></i></button>
             <div class="demo-container">
                 <div class="demo-img">
-                    <video src="assets/demos/sequence.mp4" class="active" muted playsinline autoplay></video>
-                    <video src="assets/demos/wisa-demo.mp4" muted playsinline autoplay></video>
-                    <video src="assets/demos/pacman.mp4" muted playsinline autoplay></video>
+                    <video src="assets/demos/sequence.mp4" class="active" muted playsinline></video>
+                    <video src="assets/demos/wisa-demo.mp4" muted playsinline></video>
+                    <video src="assets/demos/pacman.mp4" muted playsinline></video>
                 </div>
                 <div class="projects">
                     <div class="project">
@@ -793,5 +793,14 @@
 <!-- js files -->
 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 <script src="js/script.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('Service Worker Registered', reg))
+                .catch(err => console.log('Service Worker Registration Failed', err));
+        });
+    }
+</script>
 </body>
 </html>
