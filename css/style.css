@@ -153,10 +153,6 @@ header .navbar a:hover{
   margin-right: 0.5rem;
 }
 
-header .icons #menu-bars{
-    display: none;
-}
-
 .main-container {
     margin: auto;
     width: 80%;
@@ -237,7 +233,7 @@ a.var-1:hover {
     /* monogram position here */
     
     
-    /* ––– */
+    /* â€“â€“â€“ */
     width: 90px;
     height: 90px;
     border-radius: 90px;
@@ -285,7 +281,7 @@ a.var-1:hover {
       /* monogram responsive position here */
       top: calc(50% - 30px);
       left: calc(50% - 30px);
-      /* ––– */
+      /* â€“â€“â€“ */
       width: 60px;
       height: 60px;
     }
@@ -1099,33 +1095,8 @@ footer p{
 }
 
 @media screen and (max-width: 992px){
-    header .icons #menu-bars{
-        display: inline-block;
-    }
-
     header .navbar{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--dark-gray);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-    
-    header .navbar.active{
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transition: all 0.5s ease;
-    }
-
-    header .navbar a{
-        display: block;
-        margin: 1rem;
-        color: var(--light-gray);
-    }
-
-    header .navbar a.active,
-    header .navbar a:hover{
-        color: var(--dirty-white);
+        display: none;
     }
 
     .badge-container {
