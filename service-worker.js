@@ -2,7 +2,7 @@ const CACHE_NAME = 'site-static-v1'; // Increment this version as needed
 const ASSETS = [
     '/index.html',
     '/css/style.css',
-    '/js/script.js'
+    '/js/main.js'
 ];
 
 // Install event - caches assets

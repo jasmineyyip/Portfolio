@@ -6,7 +6,7 @@
 
 :root{
     /* colors */
-    --dirty-white: #e4e4e4;     /* background */
+    --dirty-white: #ededed;     /* background */
     --lighter-gray: #dadada;
     --light-gray: #c5c5c5;
     --steel-gray: #909090;
@@ -156,6 +156,7 @@ header .navbar a:hover{
 .main-container {
     margin: auto;
     width: 80%;
+    overflow-x: hidden;
 }
 
 .fade-in {
@@ -183,6 +184,10 @@ section h1{
 }
 
 /* typewriter effect with alterating text */
+.wrapper, .details {
+  width: 100%;
+  box-sizing: border-box;
+}
 .wrapper h2 {
   color: var(--steel-gray);
   font-family: "Playfair Display", serif;
@@ -752,11 +757,10 @@ a.var-1:hover {
 .design {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 30px;
   align-items: center;
 }
 
-.design.cookie{
+.design {
   padding-top: 80px;
 }
 
@@ -799,6 +803,10 @@ a.var-1:hover {
 .design .description .icon i {
   position: relative;
   margin-right: 10px; /* Adds some space between the icon and the text */
+}
+
+.design .description .icon i.fa-github {
+  color: var(--dark-purple);
 }
 
 .design .figma {
@@ -1181,6 +1189,14 @@ footer p{
 
     .design .figma{
       padding-top: 20px;
+    }
+
+    .design.buddyup .description{
+      margin-bottom: 0;
+    }
+
+    .design.buddyup .figma{
+      padding-top: 0;
     }
 }
 
